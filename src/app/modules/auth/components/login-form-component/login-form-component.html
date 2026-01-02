@@ -1,12 +1,12 @@
 <div class="login-form">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <label for="username">Username:</label>
     <input id="username" name="username" type="text" [(ngModel)]="request.username" required />
 
     <label for="password">Password:</label>
     <input id="password" name="password" type="password" [(ngModel)]="request.password" required />
 
-    <button type="submit" [disabled]="loading">
+    <button type="submit" [disabled]="loading" [disabled]="loginForm.invalid">
       @if(loading){
         <p>Logging in...</p>
       }
@@ -19,4 +19,6 @@
   @if(error!=''){
     {{error}}
   }
+  <button (click)="goToRegistration()">Create new user</button>
+  <button (click)="goToForgotPassword()">Forgot Password</button>
 </div>

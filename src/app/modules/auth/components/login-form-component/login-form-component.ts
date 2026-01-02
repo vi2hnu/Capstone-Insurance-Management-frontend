@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../service/auth-service';
 import { LoginModel, LoginResponse } from '../../model/login-model';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form-component',
@@ -13,7 +14,8 @@ export class LoginFormComponent {
   request: LoginModel = { username: '', password: '' };
   loading = false;
   error: string = '';
-
+  router = inject(Router);
+  
   authService = inject(AuthService);
 
   onSubmit() {
@@ -36,5 +38,13 @@ export class LoginFormComponent {
         console.error('Login error:', err);
       }
     });
+  }
+
+  goToRegistration(){
+    this.router.navigate(['/auth/register']);
+  }
+
+  goToForgotPassword(){
+    this.router.navigate(['/auth/forgot-password']);
   }
 }

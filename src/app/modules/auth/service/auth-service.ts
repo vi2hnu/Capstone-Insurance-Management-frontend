@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginModel, LoginResponse } from '../model/login-model';
 import { Observable, tap } from 'rxjs';
+import { RegisterModel } from '../model/register-model';
+import { ForgotPasswordModel, OtpVerificationModel } from '../model/forgot-password-model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,4 +22,19 @@ export class AuthService {
     );
   }
   
+  register(request: RegisterModel): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/signUp`, request);
+  }
+
+  getOtp(email: string){
+    return this.http.post<string>(`${this.baseUrl}/otp/generate/${email}`,{});
+  }
+
+  verifyOtp(request: OtpVerificationModel): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/otp/validate`, request);
+  }
+
+  forgotPassword(request: ForgotPasswordModel): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/forgot/password`, request);
+  }
 }
