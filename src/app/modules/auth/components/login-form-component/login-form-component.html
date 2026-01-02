@@ -1,0 +1,22 @@
+<div class="login-form">
+  <form (ngSubmit)="onSubmit()">
+    <label for="username">Username:</label>
+    <input id="username" name="username" type="text" [(ngModel)]="request.username" required />
+
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" [(ngModel)]="request.password" required />
+
+    <button type="submit" [disabled]="loading">
+      @if(loading){
+        <p>Logging in...</p>
+      }
+      @else{
+        <p>Login</p>
+      }
+    </button>
+  </form>
+
+  @if(error!=''){
+    {{error}}
+  }
+</div>
