@@ -1,0 +1,49 @@
+<h3>Create User</h3>
+
+<form #createUserForm="ngForm" (ngSubmit)="createUser()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" [(ngModel)]="request.name"><br><br>
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" [(ngModel)]="request.username"><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" [(ngModel)]="request.email"><br><br>
+
+  <label for="role">Role:</label>
+  <select id="role" name="role" [(ngModel)]="request.role">
+    <option>INSURANCE_AGENT</option>
+    <option>CLAIMS_OFFICER</option>
+    <option>PROVIDER</option>
+  </select><br><br>
+
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender" [(ngModel)]="request.gender">
+    <option>MALE</option>
+    <option>FEMALE</option>
+    <option>OTHER</option>
+  </select><br><br>
+
+  <button type="submit">Create User</button>
+</form>
+
+@if(successMessage){
+    <div style="color: green; margin-top: 10px;">
+  {{ successMessage }}
+</div>
+}
+@if(errorMessage){
+    <div style="color: red; margin-top: 10px;">
+    {{ errorMessage }}
+    </div>
+}
+
+@if(showHospitalList){
+  <h4>Select Hospital</h4>
+  <select [(ngModel)]="selectedHospitalId" name="hospital">
+    @for(h of hospital; track h.id){
+      <option [value]="h.id">{{h.hospitalName}}</option>
+    }
+  </select>
+  <button (click)="mapUser()">Submit Hospital</button>
+}
