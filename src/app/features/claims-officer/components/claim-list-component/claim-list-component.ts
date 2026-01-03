@@ -17,4 +17,10 @@ export class ClaimListComponent implements OnInit {
       this.claims = data;
     });
   }
+
+  downloadDocument(url: string) {
+    if (!url) return;
+    window.open(url, '_blank'); 
+  }
+  
 }

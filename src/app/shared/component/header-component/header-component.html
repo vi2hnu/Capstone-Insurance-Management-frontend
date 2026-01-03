@@ -8,7 +8,10 @@
         admin div
     }
     @else if(role == 'PROVIDER'){
-        PROVIDER div
+        provider div
+    }
+    @else if(role == 'CLAIMS_OFFICER'){
+        Claims officer div
     }
     @if(role!=null){
         <app-logout></app-logout>

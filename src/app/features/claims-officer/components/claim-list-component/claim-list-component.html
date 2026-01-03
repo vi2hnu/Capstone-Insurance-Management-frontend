@@ -1,0 +1,39 @@
+<div class="claims-container">
+  @for (claim of claims; track claim.id) {
+    <div class="claim-card">
+      <div class="claim-header">
+        <span class="claim-id"><h3>Claim id: {{ claim.id }}</h3> </span>
+      </div>
+
+      <div class="claim-body">
+        <div class="row">
+          <span class="label">Policy ID </span>
+          <span class="value">{{ claim.policyId }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">User ID </span>
+          <span class="value">{{ claim.userId }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Hospital ID </span>
+          <span class="value">{{ claim.hospitalId }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Requested Amount </span>
+          <span class="value">₹{{ claim.requestedAmount }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Requested Date </span>
+          <span class="value">{{ claim.claimRequestDate }}</span>
+        </div>
+
+      </div>
+      
+      <button> Review Claim</button>
+    </div>
+  }
+</div>
