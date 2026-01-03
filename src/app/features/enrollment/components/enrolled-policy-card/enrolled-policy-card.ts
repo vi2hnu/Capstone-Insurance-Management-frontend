@@ -4,6 +4,7 @@ import { EnrollmentService } from '../../service/enrollment-service';
 import { UserService } from '../../../../core/service/user/user-service';
 import { inject } from '@angular/core';
 import { catchError, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enrolled-policy-card',
@@ -17,7 +18,7 @@ export class EnrolledPolicyCard {
 
   private enrollmentService = inject(EnrollmentService);
   private userService = inject(UserService);
-
+  router = inject(Router);
   successMessage: string = '';
   errorMessage: string = '';
 
@@ -61,5 +62,9 @@ export class EnrolledPolicyCard {
           this.errorMessage = '';
         }
       });
+  }
+
+  claim(planId: number,policyId: number){
+    this.router.navigate(['claim/make/claim'], {state: {policyId,planId}});
   }
 }
