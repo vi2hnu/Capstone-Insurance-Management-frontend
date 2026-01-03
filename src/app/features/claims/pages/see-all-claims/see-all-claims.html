@@ -1,0 +1,7 @@
+<h2>Your Claims</h2>
+
+@if (errorMessage) {
+  <div style="color: red">{{ errorMessage }}</div>
+}
+
+<app-claims-list-component [claims]="claims"></app-claims-list-component>

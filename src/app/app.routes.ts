@@ -24,7 +24,15 @@ export const routes: Routes = [
     path: 'enrollment',
     loadChildren: () =>
       import('./features/enrollment/enrollment-module')
-        .then(m => m.EnrollmentModule)
+        .then(m => m.EnrollmentModule),
+        canActivate: [authGuardGuard]
+  },
+  {
+    path: 'claim',
+    loadChildren: () =>
+      import('./features/claims/claims-module')
+        .then(m => m.ClaimsModule),
+        canActivate: [authGuardGuard]
   }
 
 ];

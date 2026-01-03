@@ -1,0 +1,34 @@
+@for (claim of claims; track claim.id) {
+  <div class="claim-card">
+    <p><strong>Policy ID:</strong> {{ claim.policyId }}</p>
+    <p><strong>Hospital ID:</strong> {{ claim.hospitalId }}</p>
+    <p><strong>Requested Amount:</strong> {{ claim.requestedAmount }}</p>
+    <p><strong>Status:</strong> {{ claim.status }}</p>
+    <p><strong>Claim Request Date:</strong> {{ claim.claimRequestDate }}</p>
+    <p><strong>Supporting Document:</strong> 
+      <a href="{{ claim.supportingDocument }}" target="_blank">View</a>
+    </p>
+
+    @if (claim.claimsOfficerReview) {
+      <div class="review">
+        <h4>Claims Officer Review</h4>
+        <p><strong>Reviewer:</strong> {{ claim.claimsOfficerReview.userId }}</p>
+        <p><strong>Role:</strong> {{ claim.claimsOfficerReview.reviewerRole }}</p>
+        <p><strong>Status:</strong> {{ claim.claimsOfficerReview.reviewStatus }}</p>
+        <p><strong>Comments:</strong> {{ claim.claimsOfficerReview.comments }}</p>
+        <p><strong>Review Date:</strong> {{ claim.claimsOfficerReview.reviewDate }}</p>
+      </div>
+    }
+
+    @if (claim.providerReview) {
+      <div class="review">
+        <h4>Provider Review</h4>
+        <p><strong>Reviewer:</strong> {{ claim.providerReview.userId }}</p>
+        <p><strong>Role:</strong> {{ claim.providerReview.reviewerRole }}</p>
+        <p><strong>Status:</strong> {{ claim.providerReview.reviewStatus }}</p>
+        <p><strong>Comments:</strong> {{ claim.providerReview.comments }}</p>
+        <p><strong>Review Date:</strong> {{ claim.providerReview.reviewDate }}</p>
+      </div>
+    }
+  </div>
+}
