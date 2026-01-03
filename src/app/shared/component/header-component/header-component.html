@@ -1,0 +1,14 @@
+<header>
+    <h1>Smart health insurance</h1>
+
+    @if(role == 'USER' || role == 'AGENT'){
+        user div
+    }
+    @else if(role == 'ADMIN'){
+        admin div
+    }
+    @else if(role == 'PROVIDER'){
+        PROVIDER div
+    }
+    <app-logout></app-logout>
+</header>
