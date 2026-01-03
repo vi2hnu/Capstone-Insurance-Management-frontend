@@ -1,0 +1,9 @@
+@if (enrolled && policy) {
+  <app-enrolled-policy-card
+    [policy]="policy"
+  />
+} @else if (!enrolled && plan) {
+  <app-enroll-plan-card
+    [plan]="plan"
+  />
+}

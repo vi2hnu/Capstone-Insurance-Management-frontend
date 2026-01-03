@@ -1,0 +1,22 @@
+<h2>{{ policy.plan.name }}</h2>
+
+<p>Status: {{ policy.status }}</p>
+<p>Start Date: {{ policy.startDate }}</p>
+<p>End Date: {{ policy.endDate }}</p>
+
+<p>Premium: {{ policy.plan.premiumAmount }}</p>
+<p>Coverage Left: {{ policy.remainingCoverage }}</p>
+
+@if(policy.status==='ACTIVE'){
+    <button (click)="renew()">Renew</button>
+    <button (click)="cancel()">Cancel</button>
+    <button>Claim</button>
+}
+
+@if (successMessage) {
+  <div style="color: green">{{ successMessage }}</div>
+}
+
+@if (errorMessage) {
+  <div style="color: red">{{ errorMessage }}</div>
+}

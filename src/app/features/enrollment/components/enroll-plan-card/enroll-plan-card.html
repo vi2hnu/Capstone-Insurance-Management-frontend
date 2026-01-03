@@ -1,0 +1,16 @@
+<h2>{{ plan.name }}</h2>
+<p>{{ plan.description }}</p>
+
+<p>Premium: {{ plan.premiumAmount }}</p>
+<p>Coverage: {{ plan.coverageAmount }}</p>
+<p>Duration: {{ plan.duration }} months</p>
+
+<button (click)="enroll()">Enroll</button>
+
+@if (successMessage) {
+  <div style="color: green">{{ successMessage }}</div>
+}
+
+@if (errorMessage) {
+  <div style="color: red">{{ errorMessage }}</div>
+}
