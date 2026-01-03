@@ -1,0 +1,35 @@
+<div class="plans-container">
+  @for (plan of plans; track plan.id) {
+    <div class="plan-card">
+      <h2>{{ plan.name }}</h2>
+
+      <p class="description">
+        {{ plan.description }}
+      </p>
+
+      <div class="details">
+        <div>
+          <span>Premium</span>
+          <strong>₹{{ plan.premiumAmount }}</strong>
+        </div>
+
+        <div>
+          <span>Coverage</span>
+          <strong>₹{{ plan.coverageAmount }}</strong>
+        </div>
+
+        <div>
+          <span>Duration</span>
+          <strong>{{ plan.duration }} months</strong>
+        </div>
+      </div>
+
+      <button
+        [disabled]="plan.status !== 'ACTIVE'"
+        class="enroll-btn"
+      >
+        View more
+      </button>
+    </div>
+  }
+</div>

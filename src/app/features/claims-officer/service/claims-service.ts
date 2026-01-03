@@ -16,6 +16,6 @@ export class ClaimService {
   }
 
   validateClaim(payload: ClaimReviewModel): Observable<void> {
-  return this.http.put<void>(`${this.baseUrl}/validate/claim`,payload);
-}
+    return this.http.put<void>(`${this.baseUrl}/validate/claim`,payload);
+  }
 }
