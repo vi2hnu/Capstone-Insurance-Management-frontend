@@ -35,7 +35,7 @@ export class EnrollPage implements OnInit {
     this.enrollmentService
       .checkEnrollment(this.userId, this.planId)
       .subscribe(policy => {
-        if (policy && policy.id) {
+        if (policy && policy.id && policy.status!='CANCELLED') {
           this.policy = policy;
           this.enrolled = true;
         } else {
