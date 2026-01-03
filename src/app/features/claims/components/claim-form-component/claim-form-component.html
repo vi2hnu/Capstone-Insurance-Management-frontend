@@ -9,8 +9,15 @@
 }
 
 <label>
-  Hospital ID *
-  <input type="number" [(ngModel)]="hospitalId" required />
+  Hospital *
+  <select [(ngModel)]="hospitalId" required>
+    <option [ngValue]="null">Select a hospital</option>
+    @for (hospital of hospitals; track hospital.id) {
+      <option [ngValue]="hospital.hospital.id">
+        {{ hospital.hospital.hospitalName }} - {{ hospital.hospital.cityName }}
+      </option>
+    }
+  </select>
 </label>
 <br /><br />
 

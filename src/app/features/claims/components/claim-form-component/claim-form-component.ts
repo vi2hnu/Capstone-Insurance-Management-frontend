@@ -3,6 +3,7 @@ import { ClaimService } from '../../service/claim-service';
 import { UserService } from '../../../../core/service/user/user-service';
 import { ClaimRequest } from '../../model/claim-request-model';
 import { FormsModule } from '@angular/forms';
+import { HospitalNetworkModel } from '../../../../core/model/provider/provider';
 
 @Component({
   selector: 'app-claim-form-component',
@@ -21,7 +22,9 @@ export class ClaimFormComponent {
   successMessage: string = '';
   hospitalId: number | null = null;
   requestedAmount: number | null = null;
+  
   @Input() policyId: string = '';
+  @Input() hospitals: HospitalNetworkModel[] = [];
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
