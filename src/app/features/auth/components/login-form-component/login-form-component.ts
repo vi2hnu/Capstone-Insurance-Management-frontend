@@ -25,7 +25,7 @@ export class LoginFormComponent {
     this.authService.login(this.request).subscribe({
       next: (response: LoginResponse) => {
         this.loading = false;
-        console.log('Login success:', response);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.loading = false;

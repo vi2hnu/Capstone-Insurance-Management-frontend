@@ -10,5 +10,7 @@
     @else if(role == 'PROVIDER'){
         PROVIDER div
     }
-    <app-logout></app-logout>
+    @if(role!=null){
+        <app-logout></app-logout>
+    }
 </header>

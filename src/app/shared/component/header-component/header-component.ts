@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, DoCheck } from '@angular/core';
 import { Logout } from '../logout-component/logout';
+import { Roleservice } from '../../../core/service/roleservice';
 
 @Component({
   selector: 'app-header-component',
@@ -7,13 +8,11 @@ import { Logout } from '../logout-component/logout';
   templateUrl: './header-component.html',
   styleUrl: './header-component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
+  roleService = inject(Roleservice);
   role: string | null = null;
-  user = JSON.parse(localStorage.getItem('user') || 'null');
 
-  constructor() {
-    if(this.user!=null){
-      this.role = this.user.role;
-    }
+  ngDoCheck() {
+    this.role = this.roleService.getRole();
   }
 }
