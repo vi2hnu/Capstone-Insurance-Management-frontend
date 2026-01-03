@@ -1,0 +1,73 @@
+<div class="claim-card">
+      <div class="claim-header">
+        <span class="claim-id"><h3>Claim id: {{ claim.id }}</h3> </span>
+      </div>
+
+      <div class="claim-body">
+        <div class="row">
+          <span class="label">Policy ID: </span>
+          <span class="value">{{ claim.policyId }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Hospital ID: </span>
+          <span class="value">{{ claim.hospitalId }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Requested Amount: </span>
+          <span class="value">₹{{ claim.requestedAmount }}</span>
+        </div>
+
+        <div class="row">
+          <span class="label">Requested Date: </span>
+          <span class="value">{{ claim.claimRequestDate }}</span>
+        </div>
+        
+       <div class="row">
+            <span class="label">Document: </span>
+            <button type="button" (click)="downloadDocument(claim.supportingDocument)">
+                Download
+            </button>
+        </div>
+      </div>
+
+      @if (claim.providerReview) {
+        <div class="provider-review">
+          <h4>Provider Review</h4>
+
+          <div class="row">
+            <span class="label">Status: </span>
+            <span class="value">{{ claim.providerReview.reviewStatus }}</span>
+          </div>
+
+          <div class="row">
+            <span class="label">Comments: </span>
+            <span class="value">{{ claim.providerReview.comments }}</span>
+          </div>
+
+          <div class="row">
+            <span class="label">Reviewed On: </span>
+            <span class="value">{{ claim.providerReview.reviewDate }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+<div class="review-actions">
+  <textarea [(ngModel)]="request.comments" placeholder="Comments"></textarea>
+
+  <button type="button" (click)="submitReview('APPROVED')">
+    Approve
+  </button>
+
+  <button type="button" (click)="submitReview('REJECTED')">
+    Reject
+  </button>
+</div>
+
+@if (message) {
+  <div class="review-message" [class.error]="isError">
+    {{ message }}
+  </div>
+}
