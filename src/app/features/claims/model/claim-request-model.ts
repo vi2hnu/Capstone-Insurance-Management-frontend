@@ -4,4 +4,5 @@ export interface ClaimRequest {
   hospitalId: number;
   requestedAmount: number;
   supportingDocument: string;
+  agentId ?:string;
 }

@@ -1,5 +1,8 @@
 <h1>Add a claim</h1>
-<app-claim-form-component 
-  [policyId]="policyId.toString()" 
-  [hospitals]="hospitals">
-</app-claim-form-component> 
+@if (customerId) {
+  <app-claim-form-component
+    [policyId]="policyId.toString()"
+    [customerId]="customerId"
+    [hospitals]="hospitals">
+  </app-claim-form-component>
+}

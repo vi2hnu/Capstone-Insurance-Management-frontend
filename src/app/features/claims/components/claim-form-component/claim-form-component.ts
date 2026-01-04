@@ -4,6 +4,7 @@ import { UserService } from '../../../../core/service/user/user-service';
 import { ClaimRequest } from '../../model/claim-request-model';
 import { FormsModule } from '@angular/forms';
 import { HospitalNetworkModel } from '../../../../core/model/provider/provider';
+import { Roleservice } from '../../../../core/service/roleservice';
 
 @Component({
   selector: 'app-claim-form-component',
@@ -13,18 +14,20 @@ import { HospitalNetworkModel } from '../../../../core/model/provider/provider';
   styleUrl: './claim-form-component.css',
 })
 export class ClaimFormComponent {
+  @Input() policyId: string = '';
+  @Input() customerId!: string;
+  @Input() hospitals: HospitalNetworkModel[] = [];
+
   private claimService = inject(ClaimService);
+  private roleService = inject(Roleservice);
   private userService = inject(UserService);
-  
+
   selectedFile: File | null = null;
   uploadedDocument: string = '';
   errorMessage: string = '';
   successMessage: string = '';
   hospitalId: number | null = null;
   requestedAmount: number | null = null;
-  
-  @Input() policyId: string = '';
-  @Input() hospitals: HospitalNetworkModel[] = [];
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -53,29 +56,40 @@ export class ClaimFormComponent {
   }
 
   buildClaimRequest(): ClaimRequest | null {
-    const userId = this.userService.getUserId();
+    const userId = this.customerId;
     if (!userId || !this.hospitalId || !this.requestedAmount || !this.policyId || !this.uploadedDocument) {
       this.errorMessage = 'All fields are required. Please fill in all fields and upload a document.';
       return null;
     }
-    return {
+
+    const request: ClaimRequest = {
       policyId: this.policyId,
       userId: userId,
       hospitalId: this.hospitalId,
       requestedAmount: this.requestedAmount,
       supportingDocument: this.uploadedDocument,
     };
+
+    if (this.roleService.getRole() === 'INSURANCE_AGENT') {
+      const agentId = this.userService.getUserId();
+      if (agentId) {
+        request.agentId = agentId;
+      }
+    }
+
+    return request;
   }
+
 
   submitClaim() {
     this.successMessage = '';
     this.errorMessage = '';
-    
+
     const request = this.buildClaimRequest();
     if (!request) {
       return;
     }
-    
+
     this.claimService.addClaim(request).subscribe({
       next: () => {
         this.errorMessage = '';

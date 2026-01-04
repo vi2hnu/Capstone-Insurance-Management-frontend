@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HospitalNetworkModel } from '../../../../core/model/provider/provider';
 import { ProviderService } from '../../service/provider/provider-service';
 import { ClaimFormComponent } from "../../components/claim-form-component/claim-form-component";
+import { Roleservice } from '../../../../core/service/roleservice';
+import { UserService } from '../../../../core/service/user/user-service';
 
 @Component({
   selector: 'app-add-claim-page',
@@ -12,17 +14,29 @@ import { ClaimFormComponent } from "../../components/claim-form-component/claim-
 export class AddClaimPage implements OnInit {
   hospitals: HospitalNetworkModel[] = [];
   providerService = inject(ProviderService);
+  roleService = inject(Roleservice);
+  userService = inject(UserService);
+
   planId: number = 0;
   policyId: number = 0;
+  customerId!: string |null;
 
   ngOnInit(): void {
     this.planId = history.state.planId;
     this.policyId = history.state.policyId;
+
+    const role = this.roleService.getRole();
+    if (role === 'INSURANCE_AGENT') {
+      this.customerId = history.state.customerId;
+    } 
+    else {
+      this.customerId = this.userService.getUserId();
+    }
+
     this.providerService.getAllProvidersPlan(this.planId)
-      .subscribe(data => {
-        this.hospitals = data;
-      }, err => {
-        console.error('Failed to load hospitals', err);
+      .subscribe({
+        next: (data) => this.hospitals = data,
+        error: (err) => console.error('Failed to load hospitals', err),
       });
   }
 }

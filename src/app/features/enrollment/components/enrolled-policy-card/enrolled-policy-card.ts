@@ -68,14 +68,18 @@ export class EnrolledPolicyCard {
   }
 
   claim(): void {
+    const role = this.roleService.getRole();
+
     this.router.navigate(
       ['claim/make/claim'],
       {
         state: {
           policyId: this.policy.id,
           planId: this.policy.plan.id,
+          customerId: role === 'INSURANCE_AGENT' ? this.userId : null,
         },
       }
     );
   }
+
 }
