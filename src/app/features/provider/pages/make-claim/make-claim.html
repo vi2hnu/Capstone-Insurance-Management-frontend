@@ -6,6 +6,9 @@
 </app-user-check-component>
 }
 
-@if(customerId){
-    <app-claim-submission-component [customerId]="customerId"></app-claim-submission-component>
+@if(customerId && customerEnrolled){
+    <app-claim-submission-component [customerId]="customerId" [policyId]="policyId"></app-claim-submission-component>
+}
+@else if(customerId && !customerEnrolled){
+    <h2>User not enrolled in this plan</h2>
 }

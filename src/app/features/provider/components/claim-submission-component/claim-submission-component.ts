@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ClaimSubmissionComponent implements OnInit {
   @Input() customerId!: string;
+  @Input() policyId!: string | null;
   claimService = inject(ClaimService);
   private route = inject(ActivatedRoute);
 
@@ -58,7 +59,7 @@ export class ClaimSubmissionComponent implements OnInit {
   }
 
   submitClaim() {
-    if (!this.customerId || !this.hospitalId || !this.planId || !this.requestedAmount || !this.uploadedDocument) {
+    if (!this.customerId || !this.hospitalId || !this.policyId || !this.requestedAmount || !this.uploadedDocument) {
       this.errorMessage = 'All fields are required';
       return;
     }
@@ -66,7 +67,7 @@ export class ClaimSubmissionComponent implements OnInit {
     this.claimService.addClaim({
       userId: this.customerId,
       hospitalId: hospitalIdNum,
-      policyId: this.planId,
+      policyId: this.policyId,
       requestedAmount: this.requestedAmount,
       supportingDocument: this.uploadedDocument,
     }).subscribe({
