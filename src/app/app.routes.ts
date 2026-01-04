@@ -40,6 +40,13 @@ export const routes: Routes = [
       import('./features/admin/admin-module')
         .then(m => m.AdminModule),
         canActivate: [authGuardGuard]
+  },
+  {
+    path: 'provider',
+    loadChildren: () =>
+      import('./features/provider/provider-module')
+        .then(m => m.ProviderModule),
+        canActivate: [authGuardGuard]
   }
 
 ];

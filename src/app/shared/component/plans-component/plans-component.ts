@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { PlanModel } from '../../../core/model/policy/plolicy-model';
-import { PolicyService } from '../../service/policy/policy-service';
 import { Roleservice } from '../../../core/service/roleservice';
 import { Router } from '@angular/router';
+import { PolicyService } from '../../../core/service/policy/policy-service';
 
 @Component({
   selector: 'app-plans-component',
@@ -38,7 +38,7 @@ export class PlansComponent implements OnInit {
       );
     }
     else if (this.role === 'PROVIDER') {
-      this.router.navigate(['/provider/associate', { state: { plan: selectedPlan } }]);
+      this.router.navigate(['/provider/details', planId],{ state: { plan: selectedPlan } });
     }
     else if (this.role === 'ADMIN') {
       this.router.navigate(['/admin/plans', { state: { plan: selectedPlan } }]);

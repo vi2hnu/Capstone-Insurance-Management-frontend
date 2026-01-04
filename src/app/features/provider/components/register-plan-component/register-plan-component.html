@@ -1,0 +1,21 @@
+<h3>Register this plan under hospital:</h3>
+
+<form  #typeForm="ngForm" (ngSubmit)="register()">
+  <label>
+    <input type="radio" name="type" value="IN_NETWORK" required [(ngModel)]="networkType">
+    In Network
+  </label>
+  <br><br>
+
+  <label>
+    <input type="radio" name="type" value="OUT_NETWORK" required [(ngModel)]="networkType">
+    Out Network
+  </label>
+  <button type="submit" [disabled]="typeForm.invalid" >Submit</button>
+</form>
+
+
+{{successMessage}}
+
+
+{{errorMessage}}

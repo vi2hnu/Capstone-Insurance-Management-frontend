@@ -1,0 +1,16 @@
+<h1>View plan details:</h1>
+
+<div>
+  <p><b>Name:</b> {{ plan.name }}</p>
+  <p><b>Description:</b> {{ plan.description }}</p>
+  <p><b>Premium:</b> {{ plan.premiumAmount }}</p>
+  <p><b>Coverage:</b> {{ plan.coverageAmount }}</p>
+  <p><b>Duration:</b> {{ plan.duration }} months</p>
+  <p><b>Status:</b> {{ plan.status }}</p>
+</div>
+
+@if (registered) {
+  <app-registered-plan-component [planId]="plan.id" [type]="planType" ></app-registered-plan-component>
+} @else {
+  <app-register-plan-component [planId]="plan.id"[hospitalId]="hospitalId" ></app-register-plan-component>
+}
