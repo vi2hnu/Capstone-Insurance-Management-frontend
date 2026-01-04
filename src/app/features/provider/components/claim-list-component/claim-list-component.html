@@ -1,59 +1,76 @@
 <div class="claims-container">
   @for (claim of claims; track claim.id) {
-  <div class="claim-card">
-    <div class="claim-header">
-      <span class="claim-id">
-        <h3>Claim id: {{ claim.id }}</h3>
-      </span>
-    </div>
+    <div class="claim-card">
 
-    <div class="claim-body">
+      <h3>Claim id: {{ claim.id }}</h3>
+
       <div class="row">
-        <span class="label">Policy ID </span>
+        <span class="label">Policy ID</span>
         <span class="value">{{ claim.policyId }}</span>
       </div>
 
       <div class="row">
-        <span class="label">User ID </span>
+        <span class="label">User ID</span>
         <span class="value">{{ claim.userId }}</span>
       </div>
 
       <div class="row">
-        <span class="label">Hospital ID </span>
-        <span class="value">{{ claim.hospitalId }}</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Requested Amount </span>
+        <span class="label">Requested Amount</span>
         <span class="value">₹{{ claim.requestedAmount }}</span>
       </div>
 
       <div class="row">
-        <span class="label">Requested Date </span>
-        <span class="value">{{ claim.claimRequestDate }}</span>
+        <span class="label">Document</span>
+        <a [href]="claim.supportingDocument" target="_blank">view</a>
       </div>
 
-    </div>
-    @if (claim.claimsOfficerReview) {
-    <div class="row">
-      <span class="label">Officer Review Status</span>
-      <span class="value">{{ claim.claimsOfficerReview.reviewStatus }}</span>
-    </div>
+      @if (claim.claimsOfficerReview) {
+        <div class="row">
+          <span class="label">Officer Status</span>
+          <span class="value">{{ claim.claimsOfficerReview.reviewStatus }}</span>
+        </div>
+      }
 
-    <div class="row">
-      <span class="label">Officer Comments</span>
-      <span class="value">{{ claim.claimsOfficerReview.comments }}</span>
-    </div>
+      @if (mode === 'review') {
+        <hr />
 
-    <div class="row">
-      <span class="label">Reviewed On</span>
-      <span class="value">{{ claim.claimsOfficerReview.reviewDate }}</span>
-    </div>
-    }
+        <textarea
+          placeholder="Enter review comments"
+          [(ngModel)]="reviewComments[claim.id]"
+        ></textarea>
 
-    @if(mode==='review'){
-    <button> Review Claim</button>
-    }
-  </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              [name]="'status-' + claim.id"
+              value="APPROVED"
+              (change)="reviewStatus[claim.id] = 'APPROVED'"
+            />
+            Approve
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              [name]="'status-' + claim.id"
+              value="REJECTED"
+              (change)="reviewStatus[claim.id] = 'REJECTED'"
+            />
+            Reject
+          </label>
+        </div>
+
+        <button (click)="submitReview(claim.id)">Submit Review</button>
+      }
+    </div>
   }
 </div>
+
+@if (successMessage) {
+  <p style="color: green">{{ successMessage }}</p>
+}
+
+@if (errorMessage) {
+  <p style="color: red">{{ errorMessage }}</p>
+}
