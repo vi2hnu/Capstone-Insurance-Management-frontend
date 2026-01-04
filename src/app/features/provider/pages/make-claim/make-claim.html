@@ -1,0 +1,11 @@
+<h1>Submit a claim</h1>
+
+
+@if(!customerId){
+<app-user-check-component (customerChecked)="onCustomerChecked($event)">
+</app-user-check-component>
+}
+
+@if(customerId){
+    <app-claim-submission-component [customerId]="customerId"></app-claim-submission-component>
+}

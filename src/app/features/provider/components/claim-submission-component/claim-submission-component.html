@@ -1,0 +1,43 @@
+<h3>Submit Claim</h3>
+
+@if (errorMessage) {
+  <p style="color: red; padding: 10px; background-color: #ffe6e6; border-radius: 4px;">
+    {{ errorMessage }}
+  </p>
+}
+
+@if (successMessage) {
+  <p style="color: green; padding: 10px; background-color: #e6ffe6; border-radius: 4px;">
+    {{ successMessage }}
+  </p>
+}
+
+<label>
+  Requested Amount *
+  <input type="number" [(ngModel)]="requestedAmount" required />
+</label>
+<br /><br />
+
+<label>
+  Supporting Document *
+  <input type="file" (change)="onFileChange($event)" required />
+</label>
+<br /><br />
+
+<button type="button" (click)="upload()" [disabled]="!selectedFile">
+  Upload Document
+</button>
+
+<button 
+  type="button" 
+  (click)="submitClaim()"
+  [disabled]="!uploadedDocument || !requestedAmount"
+>
+  Submit Claim
+</button>
+
+@if (uploadedDocument) {
+  <p style="color: #666; margin-top: 10px;">
+    <strong>Document uploaded:</strong> {{ uploadedDocument }}
+  </p>
+}

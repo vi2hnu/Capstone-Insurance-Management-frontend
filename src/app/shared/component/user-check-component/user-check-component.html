@@ -1,0 +1,26 @@
+<h3>Enter customer details:</h3>
+
+<form #userForm="ngForm" (ngSubmit)="submit()">
+  <input 
+    name="name" 
+    [(ngModel)]="user.name" 
+    placeholder="Name" 
+    required 
+  />
+  <input 
+    name="email" 
+    [(ngModel)]="user.email" 
+    type="email" 
+    placeholder="Email" 
+    required 
+  />
+  <select name="gender" [(ngModel)]="user.gender">
+    <option value="MALE">Male</option>
+    <option value="FEMALE">Female</option>
+  </select>
+  <button type="submit" [disabled]="userForm.invalid">Check User</button>
+
+  @if(errorMessage){
+    {{errorMessage}}
+  }
+</form>
