@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PlolicyModel } from '../../../core/model/policy/plolicy-model';
+import { PolicyEnrollmentModel } from '../model/policy-enrollment-model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,22 +17,16 @@ export class EnrollmentService {
     );
   }
 
-  enrollPlan(userId: string, planId: number): Observable<PlolicyModel> {
-    const payload = {
-      userId: userId,
-      planId: planId.toString(),
-    };
-    return this.http.post<PlolicyModel>(`${this.baseUrl}/enroll`, payload);
+  enrollPlan(request: PolicyEnrollmentModel): Observable<PlolicyModel> {
+    return this.http.post<PlolicyModel>(`${this.baseUrl}/enroll`, request);
   }
 
-  renewPolicy(userId: string, planId: number): Observable<PlolicyModel> {
-    const payload = { userId, policyId: planId.toString() };
-    return this.http.post<PlolicyModel>(`${this.baseUrl}/renew`, payload);
+  renewPolicy(request: PolicyEnrollmentModel): Observable<PlolicyModel> {
+    return this.http.post<PlolicyModel>(`${this.baseUrl}/renew`, request);
   }
 
-  cancelPolicy(userId: string, planId: number): Observable<PlolicyModel> {
-    const payload = { userId, policyId: planId.toString() };
-    return this.http.delete<PlolicyModel>(`${this.baseUrl}/cancel`, { body: payload });
+  cancelPolicy(request: PolicyEnrollmentModel): Observable<PlolicyModel> {
+    return this.http.delete<PlolicyModel>(`${this.baseUrl}/cancel`, { body: request });
   }
 
 }

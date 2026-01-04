@@ -31,7 +31,7 @@ export class PlansComponent implements OnInit {
       return;
     }
 
-    if (this.role === 'USER' || this.role === 'AGENT') {
+    if (this.role === 'USER' || this.role === 'INSURANCE_AGENT') {
       this.router.navigate(
         ['/enrollment', planId],
         { state: { plan: selectedPlan } }

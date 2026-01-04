@@ -1,19 +1,23 @@
 <header>
     <h1>Smart health insurance</h1>
-
-    @if(role == 'USER' || role == 'AGENT'){
-        user div
+    
+    @if(role == 'USER'){
+        <div>User Dashboard</div>
+    }
+    @else if (role == 'INSURANCE_AGENT'){
+        <div>Insurance Agent Dashboard</div>
     }
     @else if(role == 'ADMIN'){
-        admin div
+        <div>Admin Dashboard</div>
     }
     @else if(role == 'PROVIDER'){
-        provider div
+        <div>Provider Dashboard</div>
     }
     @else if(role == 'CLAIMS_OFFICER'){
-        Claims officer div
+        <div>Claims Officer Dashboard</div>
     }
-    @if(role!=null){
+    
+    @if(role != null){
         <app-logout></app-logout>
     }
 </header>

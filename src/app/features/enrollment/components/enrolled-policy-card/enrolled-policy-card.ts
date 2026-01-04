@@ -1,70 +1,81 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { PlolicyModel } from '../../../../core/model/policy/plolicy-model';
 import { EnrollmentService } from '../../service/enrollment-service';
+import { Roleservice } from '../../../../core/service/roleservice';
 import { UserService } from '../../../../core/service/user/user-service';
-import { inject } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enrolled-policy-card',
-  imports: [],
   standalone: true,
   templateUrl: './enrolled-policy-card.html',
   styleUrl: './enrolled-policy-card.css',
 })
 export class EnrolledPolicyCard {
   @Input() policy!: PlolicyModel;
+  @Input() userId!: string; // customerId
 
   private enrollmentService = inject(EnrollmentService);
+  private roleService = inject(Roleservice);
   private userService = inject(UserService);
-  router = inject(Router);
-  successMessage: string = '';
-  errorMessage: string = '';
+  private router = inject(Router);
 
-  renew() {
-    const userId = this.userService.getUserId();
-    if (!userId) {
-      this.errorMessage = 'User not logged in.';
-      return;
+  successMessage = '';
+  errorMessage = '';
+
+  private buildRequest() {
+    const role = this.roleService.getRole();
+
+    const request: any = {
+      userId: this.userId,
+      policyId: this.policy.id,
+    };
+
+    if (role === 'INSURANCE_AGENT') {
+      request.agentId = this.userService.getUserId();
     }
 
-    this.enrollmentService.renewPolicy(userId, this.policy.id)
-      .pipe(catchError(err => {
-        this.errorMessage = 'Failed to renew policy. Try again.';
-        return of(null);
-      }))
-      .subscribe(updatedPolicy => {
-        if (updatedPolicy) {
-          this.policy = updatedPolicy;
-          this.successMessage = `Policy renewed successfully!`;
+    return request;
+  }
+
+  renew(): void {
+    this.enrollmentService.renewPolicy(this.buildRequest())
+      .subscribe({
+        next: (policy) => {
+          this.policy = policy;
+          this.successMessage = 'Policy renewed successfully';
           this.errorMessage = '';
+        },
+        error: () => {
+          this.errorMessage = 'Failed to renew policy.';
         }
       });
   }
 
-  cancel() {
-    const userId = this.userService.getUserId();
-    if (!userId) {
-      this.errorMessage = 'User not logged in.';
-      return;
-    }
-
-    this.enrollmentService.cancelPolicy(userId, this.policy.id)
-      .pipe(catchError(err => {
-        this.errorMessage = 'Failed to cancel policy. Try again.';
-        return of(null);
-      }))
-      .subscribe(canceledPolicy => {
-        if (canceledPolicy) {
-          this.policy = canceledPolicy;
-          this.successMessage = `Policy canceled successfully!`;
+  cancel(): void {
+    this.enrollmentService.cancelPolicy(this.buildRequest())
+      .subscribe({
+        next: (policy) => {
+          this.policy = policy;
+          this.successMessage = 'Policy cancelled successfully';
           this.errorMessage = '';
+        },
+        error: () => {
+          this.errorMessage = 'Failed to cancel policy.';
         }
       });
   }
 
-  claim(planId: number,policyId: number){
-    this.router.navigate(['claim/make/claim'], {state: {policyId,planId}});
+  claim(): void {
+    this.router.navigate(
+      ['claim/make/claim'],
+      {
+        state: {
+          policyId: this.policy.id,
+          planId: this.policy.plan.id,
+        },
+      }
+    );
   }
 }

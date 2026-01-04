@@ -1,4 +1,6 @@
 export interface PolicyEnrollmentModel {
     userId: string,
-    planId: number
+    planId: number,
+    agentId?: string,
+    policyId?: string,
 }

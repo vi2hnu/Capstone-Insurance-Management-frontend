@@ -1,46 +1,60 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { PlanModel } from '../../../../core/model/policy/plolicy-model';
 import { EnrollmentService } from '../../service/enrollment-service';
-import { inject } from '@angular/core';
-import { catchError, of } from 'rxjs';
+import { Roleservice } from '../../../../core/service/roleservice';
 import { UserService } from '../../../../core/service/user/user-service';
 
 @Component({
   selector: 'app-enroll-plan-card',
-  imports: [],
   standalone: true,
   templateUrl: './enroll-plan-card.html',
   styleUrl: './enroll-plan-card.css',
 })
 export class EnrollPlanCard {
   @Input() plan!: PlanModel;
+  @Input() userId!: string;
 
   private enrollmentService = inject(EnrollmentService);
+  private roleService = inject(Roleservice);
   private userService = inject(UserService);
 
-  successMessage: string = '';
-  errorMessage: string = '';
+  successMessage = '';
+  errorMessage = '';
 
-  enroll() {
-    const userId = this.userService.getUserId();
-
-    if (!userId) {
-      this.errorMessage = 'User not logged in.';
+  enroll(): void {
+    if (!this.userId) {
+      this.errorMessage = 'Invalid user';
       return;
     }
 
-    this.enrollmentService.enrollPlan(userId, this.plan.id)
-      .pipe(
-        catchError(err => {
+    const role = this.roleService.getRole();
+
+    const request: any = {
+      userId: this.userId,
+      planId: this.plan.id,
+    };
+
+    if (role === 'INSURANCE_AGENT') {
+      const agentId = this.userService.getUserId();
+      if (!agentId) {
+        this.errorMessage = 'Invalid agent';
+        return;
+      }
+      request.agentId = agentId;
+    }
+
+    this.enrollmentService.enrollPlan(request)
+      .subscribe({
+        next: (policy) => {
+          if (policy) {
+            this.successMessage = `Successfully enrolled in ${this.plan.name}!`;
+            this.errorMessage = '';
+          }
+        },
+        error: () => {
           this.errorMessage = 'Failed to enroll. Please try again.';
-          return of(null);
-        })
-      )
-      .subscribe(policy => {
-        if (policy) {
-          this.successMessage = `Successfully enrolled in ${this.plan.name}!`;
-          this.errorMessage = '';
         }
       });
+
   }
 }
