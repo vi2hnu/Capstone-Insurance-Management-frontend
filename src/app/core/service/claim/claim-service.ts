@@ -8,7 +8,7 @@ import { ClaimRequest } from '../../model/claim/claim';
 })
 export class ClaimService {
   private http = inject(HttpClient);
-  private claimBaseUrl = 'http://localhost:9000/claimsservice/api/claim';
+  private claimBaseUrl = 'http://localhost:9000/claimsservice/api';
   private uploadUrl = 'http://localhost:9000/claimsservice/api/media/upload';
 
   uploadDocument(file: File) {
@@ -18,6 +18,10 @@ export class ClaimService {
   }
 
   addClaim(request: ClaimRequest): Observable<any> {
-    return this.http.post(`${this.claimBaseUrl}/add`, request);
+    return this.http.post(`${this.claimBaseUrl}/claim/add`, request);
+  }
+
+  providerAddClaim(request: ClaimRequest) : Observable<any> {
+    return this.http.post(`${this.claimBaseUrl}/provider/add/claim`, request);
   }
 }

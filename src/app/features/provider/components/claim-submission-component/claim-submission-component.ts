@@ -64,7 +64,7 @@ export class ClaimSubmissionComponent implements OnInit {
       return;
     }
     const hospitalIdNum = Number(this.hospitalId)
-    this.claimService.addClaim({
+    this.claimService.providerAddClaim({
       userId: this.customerId,
       hospitalId: hospitalIdNum,
       policyId: this.policyId,
