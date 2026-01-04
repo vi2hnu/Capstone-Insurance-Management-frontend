@@ -4,6 +4,7 @@ import { LoginModel, LoginResponse } from '../model/login-model';
 import { Observable, tap } from 'rxjs';
 import { RegisterModel } from '../model/register-model';
 import { ForgotPasswordModel, OtpVerificationModel } from '../model/forgot-password-model';
+import { Hospital } from '../../../core/model/provider/provider';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ import { ForgotPasswordModel, OtpVerificationModel } from '../model/forgot-passw
 export class AuthService {
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:9000/identityservice/api/auth';
+  private providerUrl = 'http://localhost:9000/providerservice/api/provider/get/associated/hospital'
 
   login(request: LoginModel): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.baseUrl}/signIn`, request)
@@ -36,5 +38,14 @@ export class AuthService {
 
   forgotPassword(request: ForgotPasswordModel): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/forgot/password`, request);
+  }
+
+  getHospital(userId:string): Observable<Hospital>{
+    return this.http.get<Hospital>(`${this.providerUrl}/${userId}`).
+    pipe(
+      tap(response => {
+        localStorage.setItem('hospital', JSON.stringify(response));
+      })
+    );;
   }
 }

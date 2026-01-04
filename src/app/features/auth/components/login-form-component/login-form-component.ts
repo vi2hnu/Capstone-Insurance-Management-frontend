@@ -15,7 +15,7 @@ export class LoginFormComponent {
   loading = false;
   error: string = '';
   router = inject(Router);
-  
+
   authService = inject(AuthService);
 
   onSubmit() {
@@ -25,6 +25,9 @@ export class LoginFormComponent {
     this.authService.login(this.request).subscribe({
       next: (response: LoginResponse) => {
         this.loading = false;
+        if(response.user.role=='PROVIDER'){
+          this.getHospitalDetails(response.user.id);
+        }
         this.router.navigate(['/']);
       },
       error: (err) => {
@@ -46,5 +49,16 @@ export class LoginFormComponent {
 
   goToForgotPassword(){
     this.router.navigate(['/auth/forgot-password']);
+  }
+
+  getHospitalDetails(userId:string){
+    this.authService.getHospital(userId).subscribe({
+      next: (response)=>{
+        
+      },
+      error: (err) =>{
+        this.error = 'Failed to load hospital deatils';
+      }
+    });
   }
 }
