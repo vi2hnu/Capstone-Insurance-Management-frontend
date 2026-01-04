@@ -25,6 +25,8 @@ export class AddPlanForm {
   errorMessage = '';
   successMessage = '';
   createPlan(){
+    this.errorMessage = '';
+    this.successMessage = ''
     this.policyService.addPlan(this.request).subscribe({
       next: ()=>{
         this.successMessage = 'Plan added succesfully';

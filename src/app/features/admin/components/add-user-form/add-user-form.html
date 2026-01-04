@@ -42,7 +42,7 @@
   <h4>Select Hospital</h4>
   <select [(ngModel)]="selectedHospitalId" name="hospital">
     @for(h of hospital; track h.id){
-      <option [value]="h.id">{{h.hospitalName}}</option>
+      <option [value]="h.id">{{h.hospitalName}} - {{h.cityName}}</option>
     }
   </select>
   <button (click)="mapUser()">Submit Hospital</button>

@@ -24,13 +24,15 @@
         </div>
       </div>
 
-      <button
+      @if(role!='ADMIN'){
+        <button
         [disabled]="plan.status !== 'ACTIVE'"
         class="enroll-btn"
         (click)="routeUser(plan.id)"
       >
         View more
       </button>
+      }
     </div>
   }
 </div>

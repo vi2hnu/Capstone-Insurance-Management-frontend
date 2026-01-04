@@ -1,0 +1,25 @@
+<h3>Add hospital details:</h3>
+
+<form (ngSubmit)="createHospital()" #hospitalForm="ngForm">
+  <label>Hospital Name:</label>
+  <input type="text" name="hospitalName" [(ngModel)]="request.hospitalName" required>
+  <br><br>
+
+  <label>City Name:</label>
+  <input type="text" name="cityName" [(ngModel)]="request.cityName" required>
+  <br><br>
+
+  <label>Phone Number:</label>
+  <input type="text" name="phoneNumber" [(ngModel)]="request.phoneNumber" required>
+  <br><br>
+
+  <label>Email:</label>
+  <input type="email" name="email" [(ngModel)]="request.email" required>
+  <br><br>
+
+  <button type="submit" [disabled]="hospitalForm.invalid">Create Hospital</button>
+</form>
+
+{{successMessage}}
+
+{{errorMessage}}
