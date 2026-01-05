@@ -1,14 +1,22 @@
-<h1>Submit a claim</h1>
+<div class="submit-page-wrapper">
+  <h1>Submit a Claim</h1>
 
+  @if(!customerId){
+    <div class="check-section">
+      <app-user-check-component (customerChecked)="onCustomerChecked($event)">
+      </app-user-check-component>
+    </div>
+  }
 
-@if(!customerId){
-<app-user-check-component (customerChecked)="onCustomerChecked($event)">
-</app-user-check-component>
-}
-
-@if(customerId && customerEnrolled){
-    <app-claim-submission-component [customerId]="customerId" [policyId]="policyId"></app-claim-submission-component>
-}
-@else if(customerId && !customerEnrolled){
-    <h2>User not enrolled in this plan</h2>
-}
+  @if(customerId && customerEnrolled){
+    <app-claim-submission-component 
+      [customerId]="customerId" 
+      [policyId]="policyId">
+    </app-claim-submission-component>
+  }
+  @else if(customerId && !customerEnrolled){
+    <div class="message-box error-box">
+      <h2>User is not enrolled in this plan</h2>
+    </div>
+  }
+</div>

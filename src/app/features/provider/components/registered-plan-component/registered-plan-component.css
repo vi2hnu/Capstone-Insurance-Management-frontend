@@ -1,0 +1,49 @@
+.registered-section {
+  text-align: center;
+}
+
+.registered-section h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.status-display p {
+  color: #a0a0a0;
+  margin-bottom: 8px;
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #30475E; 
+  color: #e0e0e0;
+  border: 1px solid #555;
+  margin-bottom: 25px;
+}
+
+.network-badge.in-network {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
+}
+
+.claim-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ce3d3d;
+  color: white;
+  transition: background 0.2s;
+}
+
+.claim-btn:hover {
+  background-color: #b03535;
+}

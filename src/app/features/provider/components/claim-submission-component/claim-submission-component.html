@@ -1,43 +1,61 @@
-<h3>Submit Claim</h3>
+<div class="claim-card">
+  <h2>Claim Details</h2>
 
-@if (errorMessage) {
-  <p style="color: red; padding: 10px; background-color: #ffe6e6; border-radius: 4px;">
-    {{ errorMessage }}
-  </p>
-}
+  <form>
+    
+    <div class="form-group">
+      <label>Requested Amount (₹) *</label>
+      <input 
+        type="number" 
+        [(ngModel)]="requestedAmount" 
+        name="amount" 
+        placeholder="Enter amount" 
+        required 
+      />
+    </div>
 
-@if (successMessage) {
-  <p style="color: green; padding: 10px; background-color: #e6ffe6; border-radius: 4px;">
-    {{ successMessage }}
-  </p>
-}
+    <div class="form-group">
+      <label>Supporting Document *</label>
+      
+      <div class="upload-row">
+        <input 
+          type="file" 
+          (change)="onFileChange($event)" 
+          required 
+          class="file-input"
+        />
+        <button 
+          type="button" 
+          class="secondary-btn upload-btn" 
+          (click)="upload()" 
+          [disabled]="!selectedFile">
+          Upload
+        </button>
+      </div>
 
-<label>
-  Requested Amount *
-  <input type="number" [(ngModel)]="requestedAmount" required />
-</label>
-<br /><br />
+      @if (uploadedDocument) {
+        <div class="upload-success">
+          ✓ Document uploaded: {{ uploadedDocument }}
+        </div>
+      }
+    </div>
 
-<label>
-  Supporting Document *
-  <input type="file" (change)="onFileChange($event)" required />
-</label>
-<br /><br />
+    <button 
+      type="button" 
+      class="primary-btn"
+      (click)="submitClaim()"
+      [disabled]="!uploadedDocument || !requestedAmount"
+    >
+      Submit Claim
+    </button>
 
-<button type="button" (click)="upload()" [disabled]="!selectedFile">
-  Upload Document
-</button>
+    @if (errorMessage) {
+      <div class="message-banner error">{{ errorMessage }}</div>
+    }
 
-<button 
-  type="button" 
-  (click)="submitClaim()"
-  [disabled]="!uploadedDocument || !requestedAmount"
->
-  Submit Claim
-</button>
+    @if (successMessage) {
+      <div class="message-banner success">{{ successMessage }}</div>
+    }
 
-@if (uploadedDocument) {
-  <p style="color: #666; margin-top: 10px;">
-    <strong>Document uploaded:</strong> {{ uploadedDocument }}
-  </p>
-}
+  </form>
+</div>

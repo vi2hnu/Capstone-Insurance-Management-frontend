@@ -1,21 +1,44 @@
-<h3>Register this plan under hospital:</h3>
+<div class="register-section">
+  <h3>Register under Hospital</h3>
+  
+  <form #typeForm="ngForm" (ngSubmit)="register()">
+    
+    <div class="radio-group">
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          name="type" 
+          value="IN_NETWORK" 
+          required 
+          [(ngModel)]="networkType"
+        >
+        <span class="custom-radio"></span>
+        In Network
+      </label>
 
-<form  #typeForm="ngForm" (ngSubmit)="register()">
-  <label>
-    <input type="radio" name="type" value="IN_NETWORK" required [(ngModel)]="networkType">
-    In Network
-  </label>
-  <br><br>
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          name="type" 
+          value="OUT_NETWORK" 
+          required 
+          [(ngModel)]="networkType"
+        >
+        <span class="custom-radio"></span>
+        Out Network
+      </label>
+    </div>
 
-  <label>
-    <input type="radio" name="type" value="OUT_NETWORK" required [(ngModel)]="networkType">
-    Out Network
-  </label>
-  <button type="submit" [disabled]="typeForm.invalid" >Submit</button>
-</form>
+    <button type="submit" [disabled]="typeForm.invalid" class="submit-btn">
+      Submit Registration
+    </button>
+  </form>
 
+  @if (successMessage) {
+    <div class="message-banner success">{{ successMessage }}</div>
+  }
 
-{{successMessage}}
-
-
-{{errorMessage}}
+  @if (errorMessage) {
+    <div class="message-banner error">{{ errorMessage }}</div>
+  }
+</div>

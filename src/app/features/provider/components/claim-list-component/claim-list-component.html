@@ -1,76 +1,94 @@
-<div class="claims-container">
+<div class="claims-list">
+  
+  @if (successMessage) {
+    <div class="message-banner success">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="message-banner error">{{ errorMessage }}</div>
+  }
+
   @for (claim of claims; track claim.id) {
-    <div class="claim-card">
-
-      <h3>Claim id: {{ claim.id }}</h3>
-
-      <div class="row">
-        <span class="label">Policy ID</span>
-        <span class="value">{{ claim.policyId }}</span>
+    <div class="claim-item">
+      
+      <div class="item-header">
+        <span class="claim-id">Claim #{{ claim.id }}</span>
+        @if (claim.claimsOfficerReview) {
+           <span class="status-badge" [class]="claim.claimsOfficerReview.reviewStatus">
+             Officer: {{ claim.claimsOfficerReview.reviewStatus }}
+           </span>
+        }
       </div>
 
-      <div class="row">
-        <span class="label">User ID</span>
-        <span class="value">{{ claim.userId }}</span>
-      </div>
+      <div class="divider"></div>
 
-      <div class="row">
-        <span class="label">Requested Amount</span>
-        <span class="value">₹{{ claim.requestedAmount }}</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Document</span>
-        <a [href]="claim.supportingDocument" target="_blank">view</a>
-      </div>
-
-      @if (claim.claimsOfficerReview) {
-        <div class="row">
-          <span class="label">Officer Status</span>
-          <span class="value">{{ claim.claimsOfficerReview.reviewStatus }}</span>
+      <div class="details-grid">
+        <div class="detail-box">
+          <span class="label">Policy ID</span>
+          <span class="value">{{ claim.policyId }}</span>
         </div>
-      }
+
+        <div class="detail-box">
+          <span class="label">User ID</span>
+          <span class="value">{{ claim.userId }}</span>
+        </div>
+
+        <div class="detail-box">
+          <span class="label">Requested Amount</span>
+          <span class="value highlight">₹{{ claim.requestedAmount }}</span>
+        </div>
+
+        <div class="detail-box full-width">
+          <span class="label">Supporting Document</span>
+          <a [href]="claim.supportingDocument" target="_blank" class="doc-link">
+            View Document ↗
+          </a>
+        </div>
+      </div>
 
       @if (mode === 'review') {
-        <hr />
+        <div class="review-action-area">
+          <div class="divider"></div>
+          
+          <h4>Submit Provider Review</h4>
+          
+          <textarea
+            placeholder="Enter your comments here..."
+            [(ngModel)]="reviewComments[claim.id]"
+            rows="3"
+          ></textarea>
 
-        <textarea
-          placeholder="Enter review comments"
-          [(ngModel)]="reviewComments[claim.id]"
-        ></textarea>
+          <div class="action-row">
+            <div class="radio-group">
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  [name]="'status-' + claim.id"
+                  value="APPROVED"
+                  (change)="reviewStatus[claim.id] = 'APPROVED'"
+                />
+                <span class="custom-radio"></span>
+                Approve
+              </label>
 
-        <div>
-          <label>
-            <input
-              type="radio"
-              [name]="'status-' + claim.id"
-              value="APPROVED"
-              (change)="reviewStatus[claim.id] = 'APPROVED'"
-            />
-            Approve
-          </label>
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  [name]="'status-' + claim.id"
+                  value="REJECTED"
+                  (change)="reviewStatus[claim.id] = 'REJECTED'"
+                />
+                <span class="custom-radio"></span>
+                Reject
+              </label>
+            </div>
 
-          <label>
-            <input
-              type="radio"
-              [name]="'status-' + claim.id"
-              value="REJECTED"
-              (change)="reviewStatus[claim.id] = 'REJECTED'"
-            />
-            Reject
-          </label>
+            <button class="submit-btn" (click)="submitReview(claim.id)">
+              Submit Review
+            </button>
+          </div>
         </div>
-
-        <button (click)="submitReview(claim.id)">Submit Review</button>
       }
+
     </div>
   }
 </div>
-
-@if (successMessage) {
-  <p style="color: green">{{ successMessage }}</p>
-}
-
-@if (errorMessage) {
-  <p style="color: red">{{ errorMessage }}</p>
-}

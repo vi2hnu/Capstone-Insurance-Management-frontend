@@ -4,17 +4,21 @@
   @if (role != null) {
     <div class="header-left">
       @if (role == 'USER') {
+        <button class="profile-btn" (click)="routeToPlans()">View Plans</button>
         <button class="profile-btn" (click)="routeToMyClaims()">My Claims</button>
         <button class="profile-btn" (click)="routeToMyPolicies()">My Policies</button>
       }
       @else if (role == 'INSURANCE_AGENT') {
+        <button class="profile-btn" (click)="routeToPlans()">View Plans</button>
         <button class="profile-btn" (click)="routeToMyPolicies()">Customer Policies</button>
       }
       @else if (role == 'ADMIN') {
         <div>Admin Dashboard</div>
       }
       @else if (role == 'PROVIDER') {
-        <div>Provider Dashboard</div>
+        <button class="profile-btn" (click)="routeToPlans()">View Plans</button>
+        <button class="profile-btn" (click)="routeToProviderClaims()">Claims submitted by hospital</button>
+        <button class="profile-btn" (click)="routeToProviderReview()">Review claims</button>
       }
       @else if (role == 'CLAIMS_OFFICER') {
         <button class="profile-btn" (click)="routeToOfficerDashboard()">Dashboard</button>

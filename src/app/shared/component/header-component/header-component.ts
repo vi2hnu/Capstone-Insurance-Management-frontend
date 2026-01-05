@@ -32,4 +32,16 @@ export class HeaderComponent implements DoCheck {
   routeToOfficerDashboard(){
     this.router.navigate(['/claims-officer/dashboard']);
   }
+
+  routeToProviderClaims(){
+    this.router.navigate(['/provider/view/claim']);
+  }
+
+  routeToProviderReview(){
+    this.router.navigate(['/provider/review/claims']);
+  }
+
+  routeToPlans(){
+    this.router.navigate(['/']);
+  }
 }

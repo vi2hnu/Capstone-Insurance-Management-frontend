@@ -1,5 +1,14 @@
-<h3>Plan registered under hospital as {{ type }}</h3>
+<div class="registered-section">
+  <h3>Registration Status</h3>
+  
+  <div class="status-display">
+    <p>This plan is registered as:</p>
+    <div class="network-badge" [class.in-network]="type === 'IN_NETWORK'">
+      {{ type.replace('_', ' ') }}
+    </div>
+  </div>
 
-@if (type === '"IN_NETWORK"') {
-  <button (click)="makeClaim()">Make Claim</button>
-}
+  @if (type === 'IN_NETWORK' || type === '"IN_NETWORK"') {
+    <button class="claim-btn" (click)="makeClaim()">Make a Claim</button>
+  }
+</div>

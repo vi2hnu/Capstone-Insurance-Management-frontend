@@ -1,16 +1,50 @@
-<h1>View plan details:</h1>
+<div class="plan-page-wrapper">
+  
+  <div class="plan-card">
+    <div class="card-header">
+      <h1>{{ plan.name }}</h1>
+      <span class="status-badge" [class]="plan.status">{{ plan.status }}</span>
+    </div>
 
-<div>
-  <p><b>Name:</b> {{ plan.name }}</p>
-  <p><b>Description:</b> {{ plan.description }}</p>
-  <p><b>Premium:</b> {{ plan.premiumAmount }}</p>
-  <p><b>Coverage:</b> {{ plan.coverageAmount }}</p>
-  <p><b>Duration:</b> {{ plan.duration }} months</p>
-  <p><b>Status:</b> {{ plan.status }}</p>
+    <div class="divider"></div>
+
+    <div class="details-grid">
+      <div class="detail-box full-width">
+        <span class="label">Description</span>
+        <p class="description-text">{{ plan.description }}</p>
+      </div>
+
+      <div class="detail-box">
+        <span class="label">Premium</span>
+        <span class="value highlight">₹{{ plan.premiumAmount }}</span>
+      </div>
+
+      <div class="detail-box">
+        <span class="label">Coverage</span>
+        <span class="value highlight">₹{{ plan.coverageAmount }}</span>
+      </div>
+
+      <div class="detail-box">
+        <span class="label">Duration</span>
+        <span class="value">{{ plan.duration }} Months</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="child-container">
+      @if (registered) {
+        <app-registered-plan-component 
+          [planId]="plan.id" 
+          [type]="planType">
+        </app-registered-plan-component>
+      } @else {
+        <app-register-plan-component 
+          [planId]="plan.id" 
+          [hospitalId]="hospitalId">
+        </app-register-plan-component>
+      }
+    </div>
+
+  </div>
 </div>
-
-@if (registered) {
-  <app-registered-plan-component [planId]="plan.id" [type]="planType" ></app-registered-plan-component>
-} @else {
-  <app-register-plan-component [planId]="plan.id"[hospitalId]="hospitalId" ></app-register-plan-component>
-}

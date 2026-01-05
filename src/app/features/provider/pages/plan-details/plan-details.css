@@ -1,0 +1,90 @@
+.plan-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.plan-card {
+  background-color: #222831;
+  padding: 40px;
+  border-radius: 12px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  color: #DDDDDD;
+}
+
+/* Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.status-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  background-color: #30475E;
+  border: 1px solid #4a6b8a;
+}
+
+.divider {
+  height: 1px;
+  background-color: #30475E;
+  width: 100%;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-box.full-width {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 13px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.value.highlight {
+  color: #ce3d3d;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.description-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
