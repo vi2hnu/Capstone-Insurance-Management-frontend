@@ -55,7 +55,7 @@ export class EnrollPlanCard {
 
     this.isProcessing = true;
     this.billingService
-      .createOrder(this.userId, this.plan.premiumAmount)
+      .createOrder(this.userId, this.plan.premiumAmount,'POLICY_ENROLLMENT')
       .subscribe({
         next: (response) => this.openTransactionModal(response),
         error: () => {

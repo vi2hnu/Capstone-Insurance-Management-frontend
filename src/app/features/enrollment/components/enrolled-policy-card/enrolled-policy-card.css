@@ -1,0 +1,147 @@
+.policy-card {
+  width: 500px; /* Matches Login/Enroll width */
+  background-color: #222831; /* Dark Theme */
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #DDDDDD;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.policy-card h2 {
+  margin: 0;
+  color: #DDDDDD;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #30475E;
+}
+
+/* Status Text */
+.policy-card .status {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #30475E; /* Subtle background box */
+  margin-bottom: 5px;
+}
+
+.policy-card .status.ACTIVE {
+  color: #2ecc71; /* Bright Green */
+  border: 1px solid #2ecc71; /* Subtle border pop */
+}
+
+.policy-card .status.EXPIRED,
+.policy-card .status.CANCELLED {
+  color: #e74c3c; /* Red */
+  border: 1px solid #e74c3c;
+}
+
+/* Details Boxes (Date & Money) */
+.policy-card .details {
+  display: flex;
+  justify-content: space-between;
+  background-color: #30475E; /* Inner Box Color */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.policy-card .details p {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  width: 100%; /* Ensures equal spacing */
+}
+
+.policy-card .details span {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.policy-card .details strong {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Action Buttons Container */
+.policy-card .actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.policy-card button {
+  flex: 1; /* Makes buttons equal width */
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 1. RENEW Button (Primary Theme Red) */
+.policy-card .renew {
+  background-color: #ce3d3d;
+  color: white;
+  border: none;
+}
+.policy-card .renew:hover {
+  background-color: #b03535;
+}
+
+/* 2. CLAIM Button (Secondary White) */
+.policy-card .claim {
+  background-color: #ffffff;
+  color: #222831;
+  border: 2px solid #ffffff;
+}
+.policy-card .claim:hover {
+  background-color: #ce3d3d;
+  border-color: #ce3d3d;
+  color: white;
+}
+
+/* 3. CANCEL Button (Ghost/Outline) */
+.policy-card .cancel {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+}
+.policy-card .cancel:hover {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Messages */
+.policy-card .success,
+.policy-card .error {
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.policy-card .success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.policy-card .error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

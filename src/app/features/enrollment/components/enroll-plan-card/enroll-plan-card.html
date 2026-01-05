@@ -1,22 +1,29 @@
-<h2>{{ plan.name }}</h2>
-<p>{{ plan.description }}</p>
+<div class="enroll-card">
+  <h2>{{ plan.name }}</h2>
 
-<p>Premium: {{ plan.premiumAmount }}</p>
-<p>Coverage: {{ plan.coverageAmount }}</p>
-<p>Duration: {{ plan.duration }} months</p>
+  <p class="description">
+    {{ plan.description }}
+  </p>
 
-<button (click)="enroll()" [disabled]="isProcessing">
-  {{ isProcessing ? 'Processing...' : 'Enroll' }}
-</button>
+  <div class="details">
+    <p><span>Premium</span><strong>₹{{ plan.premiumAmount }}</strong></p>
+    <p><span>Coverage</span><strong>₹{{ plan.coverageAmount }}</strong></p>
+    <p><span>Duration</span><strong>{{ plan.duration }} months</strong></p>
+  </div>
 
-@if (isProcessing) {
-  <div style="color: blue">Processing payment...</div>
-}
+  <button (click)="enroll()" [disabled]="isProcessing">
+    {{ isProcessing ? 'Processing...' : 'Enroll' }}
+  </button>
 
-@if (successMessage) {
-  <div style="color: green">{{ successMessage }}</div>
-}
+  @if (isProcessing) {
+    <div class="processing">Processing payment...</div>
+  }
 
-@if (errorMessage) {
-  <div style="color: red">{{ errorMessage }}</div>
-}
+  @if (successMessage) {
+    <div class="success">{{ successMessage }}</div>
+  }
+
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+</div>

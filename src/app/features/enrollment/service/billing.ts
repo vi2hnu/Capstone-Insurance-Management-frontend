@@ -9,8 +9,8 @@ export class Billing {
   private http = inject(HttpClient);
   private baseUrl = 'http://localhost:9000/billingservice/api/payment';
 
-  createOrder(userId: string, amount: number): Observable<any> {
-    const request = {userId,amount,purpose: 'POLICY_ENROLLMENT'};
+  createOrder(userId: string, amount: number,purpose:string): Observable<any> {
+    const request = {userId,amount,purpose};
 
     return this.http.post<any>(`${this.baseUrl}/create/order`, request);
   }

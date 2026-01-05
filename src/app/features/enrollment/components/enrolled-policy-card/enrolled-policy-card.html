@@ -1,29 +1,38 @@
-<h2>{{ policy.plan.name }}</h2>
+<div class="policy-card">
+  <h2>{{ policy.plan.name }}</h2>
 
-<p>Status: {{ policy.status }}</p>
-@if(policy.status==='ACTIVE'){
-  <p>Start Date: {{ policy.startDate }}</p>
-  <p>End Date: {{ policy.endDate }}</p>
-}
+  <p class="status {{ policy.status }}">
+    Status: {{ policy.status }}
+  </p>
 
-<p>Premium: {{ policy.plan.premiumAmount }}</p>
-<p>Coverage Left: {{ policy.remainingCoverage }}</p>
+  @if (policy.status === 'ACTIVE') {
+    <div class="details">
+      <p><span>Start Date</span><strong>{{ policy.startDate }}</strong></p>
+      <p><span>End Date</span><strong>{{ policy.endDate }}</strong></p>
+    </div>
+  }
 
+  <div class="details">
+    <p><span>Premium</span><strong>₹{{ policy.plan.premiumAmount }}</strong></p>
+    <p><span>Coverage Left</span><strong>₹{{ policy.remainingCoverage }}</strong></p>
+  </div>
 
+  <div class="actions">
+    @if (policy.status === 'ACTIVE') {
+      <button class="renew" (click)="renew()">Renew</button>
+      <button class="claim" (click)="claim()">Claim</button>
+      <button class="cancel" (click)="cancel()">Cancel</button>
+    }
+    @else {
+      <button class="renew" (click)="renew()">Enroll again</button>
+    }
+  </div>
 
-@if(policy.status==='ACTIVE'){
-    <button (click)="renew()">Renew</button>
-    <button (click)="claim()">Claim</button>
-    <button (click)="cancel()">Cancel</button> 
-}
-@else{
-  <button (click)="renew()">Enroll again</button>
-}
+  @if (successMessage) {
+    <div class="success">{{ successMessage }}</div>
+  }
 
-@if (successMessage) {
-  <div style="color: green">{{ successMessage }}</div>
-}
-
-@if (errorMessage) {
-  <div style="color: red">{{ errorMessage }}</div>
-}
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+</div>

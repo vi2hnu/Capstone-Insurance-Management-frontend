@@ -1,0 +1,8 @@
+.policy-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to top, but centered horizontally */
+  min-height: 100vh;
+  padding-top: 60px; /* Pushes it down slightly */
+  box-sizing: border-box;
+}

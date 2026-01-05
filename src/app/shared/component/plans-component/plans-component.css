@@ -63,7 +63,7 @@ h1 {
 
 .enroll-btn {
   margin-top: auto;
-  background-color: var(--primary-btn);
+  background-color: var(--danger-btn);
   color: var(--text-light);
   border: none;
   padding: 10px;
@@ -108,4 +108,20 @@ h1 {
 .example-form.mat-focused .mdc-notched-outline__notch,
 .example-form.mat-focused .mdc-notched-outline__trailing {
   border-color: var(--primary-btn);
+}
+
+.plan-card {
+  color:white;
+}
+
+.plan-card h2,
+.plan-card p,
+.plan-card span,
+.plan-card strong {
+  color:white;
+}
+
+.description,
+.details {
+  color: #ffffff;
 }

@@ -1,13 +1,23 @@
-@if (checkUser) {
-  <app-user-check-component
-    (customerChecked)="onCustomerChecked($event)">
-  </app-user-check-component>
-}
-@else {
-  @if (enrolled && policy && userId) {
-    <app-enrolled-policy-card [policy]="policy" [userId]="userId"> </app-enrolled-policy-card>
+<div class="policy-page">
+  @if (checkUser) {
+    <app-user-check-component
+      (customerChecked)="onCustomerChecked($event)">
+    </app-user-check-component>
   }
-  @else if (!enrolled && plan && userId) {
-    <app-enroll-plan-card [plan]="plan" [userId]="userId"></app-enroll-plan-card>
+  @else {
+    @if (enrolled && policy && userId) {
+      <app-enrolled-policy-card
+        class="policy-card"
+        [policy]="policy"
+        [userId]="userId">
+      </app-enrolled-policy-card>
+    }
+    @else if (!enrolled && plan && userId) {
+      <app-enroll-plan-card
+        class="enroll-card"
+        [plan]="plan"
+        [userId]="userId">
+      </app-enroll-plan-card>
+    }
   }
-}
+</div>
