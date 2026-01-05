@@ -1,49 +1,97 @@
-<h3>Create User</h3>
+<div class="user-form-card">
+  <h2>Create New User</h2>
+  
+  <form #createUserForm="ngForm" (ngSubmit)="createUser()">
+    
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          [(ngModel)]="request.name" 
+          placeholder="Full Name" 
+          required
+        >
+      </div>
 
-<form #createUserForm="ngForm" (ngSubmit)="createUser()">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" [(ngModel)]="request.name"><br><br>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          [(ngModel)]="request.username" 
+          placeholder="Username" 
+          required
+        >
+      </div>
 
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" [(ngModel)]="request.username"><br><br>
+      <div class="form-group full-width">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          [(ngModel)]="request.email" 
+          placeholder="email@example.com" 
+          required
+        >
+      </div>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" [(ngModel)]="request.email"><br><br>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" name="role" [(ngModel)]="request.role" required>
+          <option value="" disabled selected>Select Role</option>
+          <option value="INSURANCE_AGENT">Insurance Agent</option>
+          <option value="CLAIMS_OFFICER">Claims Officer</option>
+          <option value="PROVIDER">Provider</option>
+        </select>
+      </div>
 
-  <label for="role">Role:</label>
-  <select id="role" name="role" [(ngModel)]="request.role">
-    <option>INSURANCE_AGENT</option>
-    <option>CLAIMS_OFFICER</option>
-    <option>PROVIDER</option>
-  </select><br><br>
-
-  <label for="gender">Gender:</label>
-  <select id="gender" name="gender" [(ngModel)]="request.gender">
-    <option>MALE</option>
-    <option>FEMALE</option>
-    <option>OTHER</option>
-  </select><br><br>
-
-  <button type="submit">Create User</button>
-</form>
-
-@if(successMessage){
-    <div style="color: green; margin-top: 10px;">
-  {{ successMessage }}
-</div>
-}
-@if(errorMessage){
-    <div style="color: red; margin-top: 10px;">
-    {{ errorMessage }}
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" [(ngModel)]="request.gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+          <option value="OTHER">Other</option>
+        </select>
+      </div>
     </div>
-}
 
-@if(showHospitalList){
-  <h4>Select Hospital</h4>
-  <select [(ngModel)]="selectedHospitalId" name="hospital">
-    @for(h of hospital; track h.id){
-      <option [value]="h.id">{{h.hospitalName}} - {{h.cityName}}</option>
-    }
-  </select>
-  <button (click)="mapUser()">Submit Hospital</button>
-}
+    <button type="submit" class="primary-btn" [disabled]="createUserForm.invalid">
+      Create User
+    </button>
+  </form>
+
+  @if(successMessage){
+    <div class="message-banner success">{{ successMessage }}</div>
+  }
+  @if(errorMessage){
+    <div class="message-banner error">{{ errorMessage }}</div>
+  }
+
+  @if(showHospitalList){
+    <div class="hospital-section">
+      <div class="divider"></div>
+      <h4>Map User to Hospital</h4>
+      
+      <div class="form-group full-width">
+        <label>Select Hospital</label>
+        <select [(ngModel)]="selectedHospitalId" name="hospital">
+          <option [ngValue]="null" disabled selected>Choose a hospital...</option>
+          @for(h of hospital; track h.id){
+            <option [value]="h.id">{{h.hospitalName}} - {{h.cityName}}</option>
+          }
+        </select>
+      </div>
+
+      <button class="secondary-btn" (click)="mapUser()">
+        Confirm Mapping
+      </button>
+    </div>
+  }
+
+</div>

@@ -13,7 +13,10 @@
         <button class="profile-btn" (click)="routeToMyPolicies()">Customer Policies</button>
       }
       @else if (role == 'ADMIN') {
-        <div>Admin Dashboard</div>
+        <button class="profile-btn" (click)="routeToAdminDashboard()">Dashboard</button>
+        <button class="profile-btn" (click)="routeToAddProvider()">Add provider</button>
+        <button class="profile-btn" (click)="routeToAddPlan()">Add plan</button>
+        <button class="profile-btn" (click)="routeToCreateUser()">Create Users</button>
       }
       @else if (role == 'PROVIDER') {
         <button class="profile-btn" (click)="routeToPlans()">View Plans</button>

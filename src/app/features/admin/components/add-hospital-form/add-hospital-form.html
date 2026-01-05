@@ -1,25 +1,61 @@
-<h3>Add hospital details:</h3>
+<div class="hospital-form-card">
+  <h2>Add New Hospital</h2>
 
-<form (ngSubmit)="createHospital()" #hospitalForm="ngForm">
-  <label>Hospital Name:</label>
-  <input type="text" name="hospitalName" [(ngModel)]="request.hospitalName" required>
-  <br><br>
+  <form (ngSubmit)="createHospital()" #hospitalForm="ngForm">
+    
+    <div class="form-group">
+      <label>Hospital Name</label>
+      <input 
+        type="text" 
+        name="hospitalName" 
+        [(ngModel)]="request.hospitalName"
+        required
+      >
+    </div>
 
-  <label>City Name:</label>
-  <input type="text" name="cityName" [(ngModel)]="request.cityName" required>
-  <br><br>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>City Name</label>
+        <input 
+          type="text" 
+          name="cityName" 
+          [(ngModel)]="request.cityName" 
+          required
+        >
+      </div>
 
-  <label>Phone Number:</label>
-  <input type="text" name="phoneNumber" [(ngModel)]="request.phoneNumber" required>
-  <br><br>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input 
+          type="text" 
+          name="phoneNumber" 
+          [(ngModel)]="request.phoneNumber" 
+          required
+        >
+      </div>
+    </div>
 
-  <label>Email:</label>
-  <input type="email" name="email" [(ngModel)]="request.email" required>
-  <br><br>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input 
+        type="email" 
+        name="email" 
+        [(ngModel)]="request.email" 
+        required
+      >
+    </div>
 
-  <button type="submit" [disabled]="hospitalForm.invalid">Create Hospital</button>
-</form>
+    <button type="submit" class="primary-btn" [disabled]="hospitalForm.invalid">
+      Create Hospital
+    </button>
+  </form>
 
-{{successMessage}}
+  @if(successMessage){
+    <div class="message-banner success">{{ successMessage }}</div>
+  }
 
-{{errorMessage}}
+  @if(errorMessage){
+    <div class="message-banner error">{{ errorMessage }}</div>
+  }
+
+</div>

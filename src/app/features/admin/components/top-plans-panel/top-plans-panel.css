@@ -1,0 +1,51 @@
+.top-plans-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-plans-panel li {
+  display: flex;
+  align-items: center;
+  background-color: #30475E;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.top-plans-panel li:hover {
+  transform: translateX(5px);
+  background-color: #3a556e;
+}
+
+.rank {
+  background-color: #ce3d3d;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.name {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.count {
+  background-color: rgba(0,0,0,0.2);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #a0a0a0;
+}

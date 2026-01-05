@@ -1,23 +1,34 @@
-<h1>Welcome back admin</h1>
+<div class="dashboard-wrapper">
+  <div class="header-section">
+    <h1>Welcome back, Admin</h1>
+  </div>
 
-<h2>Policy status this month:</h2>
-<app-policy-status-pannel ></app-policy-status-pannel>
+  <div class="dashboard-grid">
+    
+    <div class="dashboard-card">
+      <h2>Policy Status</h2>
+      <app-policy-status-pannel></app-policy-status-pannel>
+    </div>
 
-<br>
+    <div class="dashboard-card">
+      <h2>Claims By Status</h2>
+      <app-claims-status-panel></app-claims-status-panel>
+    </div>
 
-<br>
-<h2>Top plans of this month:</h2>
-<app-top-plans-panel></app-top-plans-panel>
+    <div class="dashboard-card">
+      <h2>Top Plans</h2>
+      <app-top-plans-panel></app-top-plans-panel>
+    </div>
 
-<br>
-<br>
-<h2>Claims By Status:</h2>
-<app-claims-status-panel></app-claims-status-panel>
-<br>
-<br>
-<h2>Claims by hospital</h2>
-<app-claim-by-hospital-panel></app-claim-by-hospital-panel>
-<br>
-<br>
-<h2>Top claims submitted this month</h2>
-<app-top-claims-panel></app-top-claims-panel>
+    <div class="dashboard-card">
+      <h2>Recent Top Claims</h2>
+      <app-top-claims-panel></app-top-claims-panel>
+    </div>
+
+    <div class="dashboard-card full-width">
+      <h2>Claims by Hospital</h2>
+      <app-claim-by-hospital-panel></app-claim-by-hospital-panel>
+    </div>
+
+  </div>
+</div>

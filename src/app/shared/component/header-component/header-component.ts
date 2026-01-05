@@ -44,4 +44,20 @@ export class HeaderComponent implements DoCheck {
   routeToPlans(){
     this.router.navigate(['/']);
   }
+
+  routeToCreateUser(){
+    this.router.navigate(['/admin/create/user']);
+  }
+  
+  routeToAddPlan(){
+    this.router.navigate(['/admin/add/plan']);
+  }
+
+  routeToAddProvider(){
+    this.router.navigate(['/admin/add/hospital']);
+  }
+
+  routeToAdminDashboard(){
+    this.router.navigate(['/admin/dashboard']);
+  }
 }

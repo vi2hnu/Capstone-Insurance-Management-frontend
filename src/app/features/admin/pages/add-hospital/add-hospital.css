@@ -1,0 +1,14 @@
+.hospital-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.hospital-page-wrapper h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222831;
+  margin-bottom: 30px;
+}
