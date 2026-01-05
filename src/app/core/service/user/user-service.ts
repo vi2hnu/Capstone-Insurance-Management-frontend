@@ -14,6 +14,14 @@ export class UserService {
     return JSON.parse(localStorage.getItem('user') || 'null')?.id ?? null;
   }
 
+  getUserName(): string | null {
+    return JSON.parse(localStorage.getItem('user') || 'null')?.username ?? null;
+  }
+
+  getUserEmail(): string | null {
+    return JSON.parse(localStorage.getItem('user') || 'null')?.email ?? null;
+  }
+
   checkUser(request: CheckUserModel): Observable<String>{
     return this.http.post(`${this.baseUrl}/user/check/user`,request,{ responseType: 'text' });
   }

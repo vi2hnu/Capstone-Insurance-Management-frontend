@@ -5,6 +5,7 @@ import { Observable, tap } from 'rxjs';
 import { RegisterModel } from '../model/register-model';
 import { ForgotPasswordModel, OtpVerificationModel } from '../model/forgot-password-model';
 import { Hospital } from '../../../core/model/provider/provider';
+import { ChangePassword } from '../model/change-password';
 
 @Injectable({
   providedIn: 'root',
@@ -48,4 +49,9 @@ export class AuthService {
       })
     );;
   }
+
+  changePassword(request: ChangePassword): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/change/password`,request);
+  }
+  
 }
