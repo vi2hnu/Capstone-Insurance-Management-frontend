@@ -5,7 +5,13 @@
 <p>Coverage: {{ plan.coverageAmount }}</p>
 <p>Duration: {{ plan.duration }} months</p>
 
-<button (click)="enroll()">Enroll</button>
+<button (click)="enroll()" [disabled]="isProcessing">
+  {{ isProcessing ? 'Processing...' : 'Enroll' }}
+</button>
+
+@if (isProcessing) {
+  <div style="color: blue">Processing payment...</div>
+}
 
 @if (successMessage) {
   <div style="color: green">{{ successMessage }}</div>
