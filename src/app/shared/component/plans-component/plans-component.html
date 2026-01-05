@@ -1,3 +1,21 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Plan</mat-label>
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Plan"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto"
+           (keydown.enter)="onEnter()">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event.option.value)">
+      @for (option of filteredOptions | async; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
 <div class="plans-container">
   @for (plan of plans; track plan.id) {
     <div class="plan-card">
