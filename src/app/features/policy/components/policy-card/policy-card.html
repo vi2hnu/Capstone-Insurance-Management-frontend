@@ -1,0 +1,19 @@
+@if (policy.length === 0) {
+  <p>No enrolled policies found.</p>
+}
+
+@for (p of policy; track p.id) {
+  <div class="policy-card">
+    <h3>{{ p.plan.name }}</h3>
+
+    <p><strong>Status:</strong> {{ p.status }}</p>
+    <p><strong>Start Date:</strong> {{ p.startDate }}</p>
+    <p><strong>End Date:</strong> {{ p.endDate }}</p>
+
+    <p><strong>Premium:</strong> {{ p.plan.premiumAmount }}</p>
+    <p><strong>Coverage:</strong> {{ p.plan.coverageAmount }}</p>
+    <p><strong>Remaining Coverage:</strong> {{ p.remainingCoverage }}</p>
+
+    <p><strong>Renewals Used:</strong> {{ p.renewalCounter }}</p>
+  </div>
+}

@@ -47,6 +47,13 @@ export const routes: Routes = [
       import('./features/provider/provider-module')
         .then(m => m.ProviderModule),
         canActivate: [authGuardGuard]
+  },
+  {
+    path: 'your/policies',
+    loadChildren: () =>
+      import('./features/policy/policy-module')
+        .then(m => m.PolicyModule),
+        canActivate: [authGuardGuard]
   }
 
 ];

@@ -21,4 +21,8 @@ export class PolicyService {
   checkEnrollment(userId:string, planId:string): Observable<PlolicyModel>{
     return this.http.get<PlolicyModel>(`${this.baseUrl}/policy/check/enrollment/${userId}/${planId}`);
   }
+
+  getAllEnrolledPlan(userId:string): Observable<PlolicyModel[]>{
+    return this.http.get<PlolicyModel[]>(`${this.baseUrl}/policy/get/all/${userId}`);
+  }
 }
