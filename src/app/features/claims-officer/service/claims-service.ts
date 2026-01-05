@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ClaimModel } from '../model/claim-model';
+import { ClaimModel } from '../../../core/model/claim/claim'
 import { ClaimReviewModel } from '../model/claim-review-model';
 
 @Injectable({

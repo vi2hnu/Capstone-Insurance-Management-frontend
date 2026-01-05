@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ClaimModel } from '../../model/claim-model';
+import { ClaimModel } from '../../../../core/model/claim/claim';
 import { ClaimService } from '../../service/claims-service';
 import { ClaimReviewModel } from '../../model/claim-review-model';
 import { UserService } from '../../../../core/service/user/user-service';
