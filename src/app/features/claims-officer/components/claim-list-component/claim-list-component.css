@@ -1,0 +1,95 @@
+.claim-item {
+  background-color: #222831;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.claim-id {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.review-btn {
+  background-color: #ce3d3d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.review-btn:hover {
+  background-color: #b03535;
+}
+
+.divider {
+  height: 1px;
+  background-color: #30475E;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.value.highlight {
+  color: #ce3d3d;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .details-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .item-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  .review-btn {
+    width: 100%;
+  }
+}

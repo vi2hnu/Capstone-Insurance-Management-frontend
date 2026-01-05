@@ -4,7 +4,6 @@
   @if (role != null) {
     <div class="header-left">
       @if (role == 'USER') {
-        <div>User Dashboard</div>
         <button class="profile-btn" (click)="routeToMyClaims()">My Claims</button>
         <button class="profile-btn" (click)="routeToMyPolicies()">My Policies</button>
       }
@@ -18,7 +17,7 @@
         <div>Provider Dashboard</div>
       }
       @else if (role == 'CLAIMS_OFFICER') {
-        <div>Claims Officer Dashboard</div>
+        <button class="profile-btn" (click)="routeToOfficerDashboard()">Dashboard</button>
       }
       <button class="profile-btn" (click)="routeToProfile()">My Profile</button>
       <app-logout></app-logout>

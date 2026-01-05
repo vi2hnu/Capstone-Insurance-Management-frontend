@@ -28,4 +28,8 @@ export class HeaderComponent implements DoCheck {
   routeToMyClaims(){
     this.router.navigate(['/claim/view/all/claims']);
   }
+
+  routeToOfficerDashboard(){
+    this.router.navigate(['/claims-officer/dashboard']);
+  }
 }

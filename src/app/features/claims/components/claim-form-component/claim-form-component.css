@@ -1,0 +1,146 @@
+.claim-card {
+  background-color: #222831;
+  padding: 50px 40px;
+  border-radius: 12px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.claim-card h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #DDDDDD;
+  text-align: center;
+  margin: 0 0 10px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #30475E;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #DDDDDD;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #30475E;
+  color: #DDDDDD;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #ce3d3d;
+}
+
+.upload-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.file-input {
+  flex: 1;
+  background-color: #30475E;
+  color: #DDDDDD;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.file-input::file-selector-button {
+  background-color: #222831;
+  color: #DDDDDD;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.upload-btn {
+  width: auto;
+  padding: 10px 20px;
+}
+
+.upload-success {
+  font-size: 13px;
+  color: #2ecc71;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ce3d3d;
+  color: white;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.primary-btn:hover {
+  background-color: #b03535;
+}
+
+.secondary-btn {
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background-color: #ffffff;
+  color: #222831;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #6c757d !important;
+  color: #fff !important;
+  border-color: #6c757d !important;
+}
+
+.message-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.success-box {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error-box {
+  background-color: #f8d7da;
+  color: #721c24;
+}

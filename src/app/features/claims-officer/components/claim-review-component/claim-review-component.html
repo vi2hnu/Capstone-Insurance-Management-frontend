@@ -1,73 +1,81 @@
-<div class="claim-card">
-      <div class="claim-header">
-        <span class="claim-id"><h3>Claim id: {{ claim.id }}</h3> </span>
-      </div>
-
-      <div class="claim-body">
-        <div class="row">
-          <span class="label">Policy ID: </span>
-          <span class="value">{{ claim.policyId }}</span>
-        </div>
-
-        <div class="row">
-          <span class="label">Hospital ID: </span>
-          <span class="value">{{ claim.hospitalId }}</span>
-        </div>
-
-        <div class="row">
-          <span class="label">Requested Amount: </span>
-          <span class="value">₹{{ claim.requestedAmount }}</span>
-        </div>
-
-        <div class="row">
-          <span class="label">Requested Date: </span>
-          <span class="value">{{ claim.claimRequestDate }}</span>
-        </div>
-        
-       <div class="row">
-            <span class="label">Document: </span>
-            <button type="button" (click)="downloadDocument(claim.supportingDocument)">
-                Download
-            </button>
-        </div>
-      </div>
-
-      @if (claim.providerReview) {
-        <div class="provider-review">
-          <h4>Provider Review</h4>
-
-          <div class="row">
-            <span class="label">Status: </span>
-            <span class="value">{{ claim.providerReview.reviewStatus }}</span>
-          </div>
-
-          <div class="row">
-            <span class="label">Comments: </span>
-            <span class="value">{{ claim.providerReview.comments }}</span>
-          </div>
-
-          <div class="row">
-            <span class="label">Reviewed On: </span>
-            <span class="value">{{ claim.providerReview.reviewDate }}</span>
-          </div>
-        </div>
-      }
-    </div>
-
-<div class="review-actions">
-  <textarea [(ngModel)]="request.comments" placeholder="Comments"></textarea>
-
-  <button type="button" (click)="submitReview('APPROVED')">
-    Approve
-  </button>
-
-  <button type="button" (click)="submitReview('REJECTED')">
-    Reject
-  </button>
-</div>
-
-@if (message) {
-  <div class="review-message" [class.error]="isError">
-    {{ message }}
+<div class="review-card">
+  
+  <div class="card-header">
+    <h3>Claim #{{ claim.id }}</h3>
   </div>
-}
+
+  <div class="divider"></div>
+
+  <div class="details-section">
+    <div class="detail-row">
+      <span class="label">Policy ID</span>
+      <span class="value">{{ claim.policyId }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Hospital ID</span>
+      <span class="value">{{ claim.hospitalId }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Requested Amount</span>
+      <span class="value highlight">₹{{ claim.requestedAmount }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Requested Date</span>
+      <span class="value">{{ claim.claimRequestDate }}</span>
+    </div>
+    <div class="detail-row full-width">
+      <span class="label">Supporting Document</span>
+      <button class="download-btn" type="button" (click)="downloadDocument(claim.supportingDocument)">
+        Download Document ↓
+      </button>
+    </div>
+    @if(claim.providerReview===null){
+      <span class="value">In-Network claim</span>
+    }
+  </div>
+
+  @if (claim.providerReview) {
+    <div class="provider-review-box">
+      <h4>Provider Review</h4>
+      <div class="review-grid">
+        <div class="detail-row">
+          <span class="label">Status</span>
+          <span class="value status-text">{{ claim.providerReview.reviewStatus }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Date</span>
+          <span class="value">{{ claim.providerReview.reviewDate }}</span>
+        </div>
+        <div class="detail-row full-width">
+          <span class="label">Comments</span>
+          <p class="comment-text">"{{ claim.providerReview.comments }}"</p>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="action-section">
+    <label>Your Decision Comments</label>
+    <textarea 
+      [(ngModel)]="request.comments" 
+      placeholder="Enter reason for approval or rejection..."
+      rows="4"
+    ></textarea>
+
+    <div class="buttons-row">
+      <button class="approve-btn" type="button" (click)="submitReview('APPROVED')">
+        Approve
+      </button>
+      <button class="reject-btn" type="button" (click)="submitReview('REJECTED')">
+        Reject
+      </button>
+    </div>
+  </div>
+
+  @if (message) {
+    <div class="message-box" [class.error]="isError" [class.success]="!isError">
+      {{ message }}
+    </div>
+  }
+
+</div>

@@ -1,0 +1,176 @@
+.review-card {
+  background-color: #222831;
+  border-radius: 12px;
+  padding: 40px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  color: #DDDDDD;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 28px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  background-color: #30475E;
+  width: 100%;
+}
+
+.details-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-row.full-width {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 13px;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.value.highlight {
+  color: #ce3d3d;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.download-btn {
+  background-color: transparent;
+  border: 1px solid #6d89a5;
+  color: #6d89a5;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+  transition: all 0.2s;
+}
+
+.download-btn:hover {
+  background-color: #394a5b;
+  color: white;
+}
+
+.provider-review-box {
+  background-color: #30475E;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #f1c40f;
+}
+
+.provider-review-box h4 {
+  margin: 0 0 15px 0;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.comment-text {
+  font-style: italic;
+  color: #e0e0e0;
+  margin: 5px 0 0 0;
+  background-color: rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  border-top: 1px solid #30475E;
+  padding-top: 25px;
+}
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #30475E;
+  color: #DDDDDD;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: 2px solid #ce3d3d;
+}
+
+.buttons-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.buttons-row button {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.buttons-row button:hover {
+  opacity: 0.9;
+}
+
+.approve-btn {
+  background-color: #2ecc71;
+}
+
+.reject-btn {
+  background-color: #e74c3c;
+}
+
+.message-box {
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.message-box.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message-box.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
