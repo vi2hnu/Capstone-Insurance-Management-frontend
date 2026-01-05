@@ -1,10 +1,13 @@
-<h1>Your policies:</h1>
+<div class="policies-page">
+  <h1>Your Policies</h1>
 
-@if (!haveUserDetails) {
-  <app-user-check-component
-    (customerChecked)="onCustomerChecked($event)">
-  </app-user-check-component>
-}
-@else {
-  <app-policy-card [id]="id"></app-policy-card>
-}
+  @if (!haveUserDetails) {
+    <div class="check-user-section">
+      <app-user-check-component (customerChecked)="onCustomerChecked($event)">
+      </app-user-check-component>
+    </div>
+  }
+  @else {
+    <app-policy-card [id]="id"></app-policy-card>
+  }
+</div>

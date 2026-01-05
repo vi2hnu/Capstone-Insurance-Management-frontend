@@ -5,9 +5,11 @@
     <div class="header-left">
       @if (role == 'USER') {
         <div>User Dashboard</div>
+        <button class="profile-btn" (click)="routeToMyClaims()">My Claims</button>
+        <button class="profile-btn" (click)="routeToMyPolicies()">My Policies</button>
       }
       @else if (role == 'INSURANCE_AGENT') {
-        <div>Insurance Agent Dashboard</div>
+        <button class="profile-btn" (click)="routeToMyPolicies()">Customer Policies</button>
       }
       @else if (role == 'ADMIN') {
         <div>Admin Dashboard</div>

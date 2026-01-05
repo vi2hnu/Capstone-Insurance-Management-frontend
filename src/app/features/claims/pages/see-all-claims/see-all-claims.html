@@ -1,7 +1,11 @@
-<h2>Your Claims</h2>
+<div class="claims-page">
+  <h2>Your Claims</h2>
 
-@if (errorMessage) {
-  <div style="color: red">{{ errorMessage }}</div>
-}
+  @if (errorMessage) {
+    <div class="error-banner">{{ errorMessage }}</div>
+  }
 
-<app-claims-list-component [claims]="claims"></app-claims-list-component>
+  <div class="claims-list-container">
+    <app-claims-list-component [claims]="claims"></app-claims-list-component>
+  </div>
+</div>

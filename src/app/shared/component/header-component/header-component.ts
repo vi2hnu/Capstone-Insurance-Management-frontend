@@ -20,4 +20,12 @@ export class HeaderComponent implements DoCheck {
   routeToProfile(){
     this.router.navigate(['/auth/info']);
   }
+
+  routeToMyPolicies(){
+    this.router.navigate(['/your/policies']);
+  }
+
+  routeToMyClaims(){
+    this.router.navigate(['/claim/view/all/claims']);
+  }
 }

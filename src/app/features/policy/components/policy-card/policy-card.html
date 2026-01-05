@@ -1,19 +1,45 @@
 @if (policy.length === 0) {
-  <p>No enrolled policies found.</p>
-}
-
-@for (p of policy; track p.id) {
-  <div class="policy-card">
-    <h3>{{ p.plan.name }}</h3>
-
-    <p><strong>Status:</strong> {{ p.status }}</p>
-    <p><strong>Start Date:</strong> {{ p.startDate }}</p>
-    <p><strong>End Date:</strong> {{ p.endDate }}</p>
-
-    <p><strong>Premium:</strong> {{ p.plan.premiumAmount }}</p>
-    <p><strong>Coverage:</strong> {{ p.plan.coverageAmount }}</p>
-    <p><strong>Remaining Coverage:</strong> {{ p.remainingCoverage }}</p>
-
-    <p><strong>Renewals Used:</strong> {{ p.renewalCounter }}</p>
+  <div class="no-policy-box">
+    <p>No enrolled policies found.</p>
   </div>
 }
+
+<div class="policies-grid">
+  @for (p of policy; track p.id) {
+    <div class="policy-card">
+      <div class="card-header">
+        <h3>{{ p.plan.name }}</h3>
+        <span class="status-badge" [class]="p.status">{{ p.status }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="label">Start Date</span>
+          <span class="value">{{ p.startDate }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">End Date</span>
+          <span class="value">{{ p.endDate }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Premium</span>
+          <span class="value">₹{{ p.plan.premiumAmount }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Total Coverage</span>
+          <span class="value">₹{{ p.plan.coverageAmount }}</span>
+        </div>
+        <div class="detail-item full-width">
+          <span class="label">Remaining Coverage</span>
+          <span class="value highlight">₹{{ p.remainingCoverage }}</span>
+        </div>
+        <div class="detail-item full-width">
+          <span class="label">Renewals Used</span>
+          <span class="value">{{ p.renewalCounter }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,17 @@
+.policies-page {
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.policies-page h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222831;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.check-user-section {
+  display: flex;
+  justify-content: center;
+}

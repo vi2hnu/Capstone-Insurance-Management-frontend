@@ -1,34 +1,66 @@
 @for (claim of claims; track claim.id) {
   <div class="claim-card">
-    <p><strong>Policy ID:</strong> {{ claim.policyId }}</p>
-    <p><strong>Hospital ID:</strong> {{ claim.hospitalId }}</p>
-    <p><strong>Requested Amount:</strong> {{ claim.requestedAmount }}</p>
-    <p><strong>Status:</strong> {{ claim.status }}</p>
-    <p><strong>Claim Request Date:</strong> {{ claim.claimRequestDate }}</p>
-    <p><strong>Supporting Document:</strong> 
-      <a href="{{ claim.supportingDocument }}" target="_blank">View</a>
-    </p>
+    
+    <div class="card-header">
+      <div class="policy-info">
+        <span class="label">Policy ID</span>
+        <span class="id-text">{{ claim.policyId }}</span>
+      </div>
+      <span class="status-badge" [class]="claim.status">{{ claim.status }}</span>
+    </div>
 
-    @if (claim.claimsOfficerReview) {
-      <div class="review">
-        <h4>Claims Officer Review</h4>
-        <p><strong>Reviewer:</strong> {{ claim.claimsOfficerReview.userId }}</p>
-        <p><strong>Role:</strong> {{ claim.claimsOfficerReview.reviewerRole }}</p>
-        <p><strong>Status:</strong> {{ claim.claimsOfficerReview.reviewStatus }}</p>
-        <p><strong>Comments:</strong> {{ claim.claimsOfficerReview.comments }}</p>
-        <p><strong>Review Date:</strong> {{ claim.claimsOfficerReview.reviewDate }}</p>
+    <div class="divider"></div>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Hospital ID</span>
+        <span class="value">{{ claim.hospitalId }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Requested Amount</span>
+        <span class="value highlight">₹{{ claim.requestedAmount }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Request Date</span>
+        <span class="value">{{ claim.claimRequestDate }}</span>
+      </div>
+      <div class="info-item full-width">
+        <span class="label">Document</span>
+        <a href="{{ claim.supportingDocument }}" target="_blank" class="doc-link">
+          View Supporting Document ↗
+        </a>
+      </div>
+    </div>
+
+    @if (claim.claimsOfficerReview || claim.providerReview) {
+      <div class="reviews-section">
+        
+        @if (claim.claimsOfficerReview) {
+          <div class="review-box">
+            <h4>Claims Officer Review</h4>
+            <div class="review-details">
+              <p><span>Reviewer ID:</span> {{ claim.claimsOfficerReview.userId }}</p>
+              <p><span>Status:</span> <strong [class]="claim.claimsOfficerReview.reviewStatus">{{ claim.claimsOfficerReview.reviewStatus }}</strong></p>
+              <p><span>Date:</span> {{ claim.claimsOfficerReview.reviewDate }}</p>
+              <p class="comments">"{{ claim.claimsOfficerReview.comments }}"</p>
+            </div>
+          </div>
+        }
+
+        @if (claim.providerReview) {
+          <div class="review-box">
+            <h4>Provider Review</h4>
+            <div class="review-details">
+              <p><span>Reviewer ID:</span> {{ claim.providerReview.userId }}</p>
+              <p><span>Status:</span> <strong [class]="claim.providerReview.reviewStatus">{{ claim.providerReview.reviewStatus }}</strong></p>
+              <p><span>Date:</span> {{ claim.providerReview.reviewDate }}</p>
+              <p class="comments">"{{ claim.providerReview.comments }}"</p>
+            </div>
+          </div>
+        }
+
       </div>
     }
 
-    @if (claim.providerReview) {
-      <div class="review">
-        <h4>Provider Review</h4>
-        <p><strong>Reviewer:</strong> {{ claim.providerReview.userId }}</p>
-        <p><strong>Role:</strong> {{ claim.providerReview.reviewerRole }}</p>
-        <p><strong>Status:</strong> {{ claim.providerReview.reviewStatus }}</p>
-        <p><strong>Comments:</strong> {{ claim.providerReview.comments }}</p>
-        <p><strong>Review Date:</strong> {{ claim.providerReview.reviewDate }}</p>
-      </div>
-    }
   </div>
 }
