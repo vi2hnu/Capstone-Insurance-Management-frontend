@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      @if(role!='ADMIN'){
+     @if (role!=null && !['ADMIN', 'CLAIMS_OFFICER'].includes(role)){
         <button
         [disabled]="plan.status !== 'ACTIVE'"
         class="enroll-btn"

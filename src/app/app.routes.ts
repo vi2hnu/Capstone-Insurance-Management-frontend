@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { authGuardGuard } from './core/guard/auth-guard-guard';
+import { authGuardGuard } from './core/guard/auth/auth-guard-guard';
+import { roleGuard } from './core/guard/role/role-guard';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/claims-officer/claims-officer-module')
         .then(m => m.ClaimsOfficerModule),
-    canActivate: [authGuardGuard]
+    canActivate: [authGuardGuard,roleGuard],
+    data : {role:['CLAIMS_OFFICER']}
   },
   {
     path: '',
@@ -25,35 +27,40 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/enrollment/enrollment-module')
         .then(m => m.EnrollmentModule),
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard,roleGuard],
+        data : {role:['USER','INSURANCE_AGENT']}
   },
   {
     path: 'claim',
     loadChildren: () =>
       import('./features/claims/claims-module')
         .then(m => m.ClaimsModule),
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard,roleGuard],
+        data : {role:['USER','INSURANCE_AGENT']}
   },
   {
     path: 'admin',
     loadChildren: () =>
       import('./features/admin/admin-module')
         .then(m => m.AdminModule),
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard,roleGuard],
+        data : {role:['ADMIN']}
   },
   {
     path: 'provider',
     loadChildren: () =>
       import('./features/provider/provider-module')
         .then(m => m.ProviderModule),
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard,roleGuard],
+        data : {role:['PROVIDER']}
   },
   {
     path: 'your/policies',
     loadChildren: () =>
       import('./features/policy/policy-module')
         .then(m => m.PolicyModule),
-        canActivate: [authGuardGuard]
+        canActivate: [authGuardGuard,roleGuard],
+        data: {role:['USER','INSURANCE_AGENT']}
   }
 
 ];
