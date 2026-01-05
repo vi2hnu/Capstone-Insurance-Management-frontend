@@ -35,8 +35,13 @@ export class AddClaimPage implements OnInit {
 
     this.providerService.getAllProvidersPlan(this.planId)
       .subscribe({
-        next: (data) => this.hospitals = data,
+        next: (data) => {
+          this.hospitals = data;
+          this.hospitals = this.hospitals.filter((data) => data.networkType==="OUT_NETWORK" )
+        },
         error: (err) => console.error('Failed to load hospitals', err),
       });
+      
+    
   }
 }
