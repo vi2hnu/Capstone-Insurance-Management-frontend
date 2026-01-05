@@ -1,0 +1,12 @@
+<div class="top-plans-panel">
+
+  <ul>
+    @for (plan of topPlans; track plan.planName; let i = $index) {
+      <li>
+        <span class="rank">{{ i + 1 }}</span>
+        <span class="name">{{ plan.planName }}</span>
+        <span class="count">{{ plan.count }}</span>
+      </li>
+    }
+  </ul>
+</div>

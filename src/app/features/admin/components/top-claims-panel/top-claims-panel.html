@@ -1,0 +1,28 @@
+@if (claims.length > 0) {
+  <table>
+    <thead>
+      <tr>
+        <th>Claim ID</th>
+        <th>User ID</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Stage</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (claim of claims; track claim.id) {
+        <tr>
+          <td>{{ claim.id }}</td>
+          <td>{{ claim.userId }}</td>
+          <td>{{ claim.requestedAmount }}</td>
+          <td>{{ claim.status }}</td>
+          <td>{{ claim.stage }}</td>
+          <td>{{ claim.claimRequestDate}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <div>No claims found.</div>
+}

@@ -1,0 +1,65 @@
+<div class="filters">
+
+  <select (change)="onHospitalChange($event)">
+    <option value="">Select Hospital</option>
+    @for (hospital of hospitals; track hospital.id) {
+      <option [value]="hospital.id">
+        {{ hospital.hospitalName }} ({{ hospital.cityName }})
+      </option>
+    }
+  </select>
+
+  <select (change)="onPageSizeChange($event)">
+    @for (size of pageSizes; track size) {
+      <option [value]="size" [selected]="size === pageSize">
+        {{ size }} per page
+      </option>
+    }
+  </select>
+
+</div>
+
+@if (claims.length > 0) {
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Stage</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (claim of claims; track claim.id) {
+        <tr>
+          <td>{{ claim.id }}</td>
+          <td>{{ claim.userId }}</td>
+          <td>{{ claim.requestedAmount }}</td>
+          <td>{{ claim.status }}</td>
+          <td>{{ claim.stage }}</td>
+          <td>{{ claim.claimRequestDate}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <div>No claims found.</div>
+}
+
+@if (totalPages > 1) {
+  <div class="pagination">
+    <button (click)="onPageChange(pageNumber - 1)" [disabled]="pageNumber === 0">Prev</button>
+
+    @for (i of [].constructor(totalPages); track i) {
+      <button
+        (click)="onPageChange(i)"
+        [class.active]="i === pageNumber">
+        {{ i + 1 }}
+      </button>
+    }
+
+    <button (click)="onPageChange(pageNumber + 1)" [disabled]="pageNumber === totalPages - 1">Next</button>
+  </div>
+}

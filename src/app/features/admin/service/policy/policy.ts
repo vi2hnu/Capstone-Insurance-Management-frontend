@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { PlanModel } from '../../../../core/model/policy/plolicy-model';
 import { Observable } from 'rxjs';
+import { TopPlan } from '../../model/top-plan';
 
 @Injectable({
   providedIn: 'root',
@@ -14,4 +15,11 @@ export class Policy {
     return this.http.post<PlanModel>(`${this.baseUrl}/plan/add`,request);
   }
 
+  getPolicyStatusCounts(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/get/policies/by-status`);
+  }
+
+  getTopPlans(): Observable<TopPlan[]>{
+    return this.http.get<TopPlan[]>(`${this.baseUrl}/plan/analytics`);
+  }
 }
