@@ -7,3 +7,66 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --bg-main: #ececd3;
+  --card-outer: #222831;
+  --card-inner: #30475E;
+  --primary-btn: #ffffff;
+  --primary-btn-hover: #ce3d3d;
+  --danger-btn: #ce3d3d;
+  --danger-btn-hover: #a93226;
+  --text-dark: #222831;
+  --text-light: #ececd3;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100%;
+}
+
+.card-outer {
+  background-color: var(--card-outer);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card-inner {
+  background-color: var(--card-inner);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: var(--text-light);
+}
+
+.btn {
+  background-color: var(--primary-btn);
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--primary-btn-hover);
+  color: var(--text-light);
+}
+
+.btn-danger {
+  background-color: var(--danger-btn);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-btn-hover);
+}

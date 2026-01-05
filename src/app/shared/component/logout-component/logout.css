@@ -1,0 +1,13 @@
+button {
+  background-color: var(--danger-btn);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--danger-btn-hover);
+}
+

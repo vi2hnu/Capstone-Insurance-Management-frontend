@@ -1,0 +1,111 @@
+h1 {
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+
+
+
+.example-full-width {
+  width: 100%;
+}
+
+.plans-container {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;      
+  gap: 20px;
+}
+.plan-card {
+  width: 60%;
+  background-color: var(--card-outer);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-card h2 {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+.description {
+  background-color: var(--card-inner);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--card-inner);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.details div {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.details span {
+  opacity: 0.8;
+}
+
+.details strong {
+  color: var(--text-dark);
+}
+
+
+.enroll-btn {
+  margin-top: auto;
+  background-color: var(--primary-btn);
+  color: var(--text-light);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 20%;
+}
+
+
+.example-form {
+  width: 60%;
+  margin: 0 auto 24px auto;
+  margin-left: 20%;
+}
+
+.example-form .mat-mdc-form-field {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.example-form .mat-mdc-text-field-wrapper {
+  border-radius: 14px;
+}
+
+
+.example-form input {
+  color: var(--text-dark);
+}
+
+.example-form mat-label {
+  color: var(--text-dark);
+}
+
+.example-form .mdc-notched-outline__leading,
+.example-form .mdc-notched-outline__notch,
+.example-form .mdc-notched-outline__trailing {
+  border-color: var(--card-outer);
+}
+
+
+.example-form.mat-focused .mdc-notched-outline__leading,
+.example-form.mat-focused .mdc-notched-outline__notch,
+.example-form.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--primary-btn);
+}

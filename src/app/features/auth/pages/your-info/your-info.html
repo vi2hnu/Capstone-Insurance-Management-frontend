@@ -1,7 +1,21 @@
-<h1>Your Info</h1>
+<div class="profile-wrapper">
+  <div class="profile-card">
+    <h1>Your Info</h1>
+    
+    <div class="info-section">
+      <div class="info-group">
+        <label>Username</label>
+        <div class="info-box">{{userName}}</div>
+      </div>
+      
+      <div class="info-group">
+        <label>Email</label>
+        <div class="info-box">{{email}}</div>
+      </div>
+    </div>
 
-{{userName}}
+    <hr class="divider">
 
-{{email}}
-
-<app-change-password-form [userName] = "userName"></app-change-password-form>
+    <app-change-password-form [userName]="userName"></app-change-password-form>
+  </div>
+</div>

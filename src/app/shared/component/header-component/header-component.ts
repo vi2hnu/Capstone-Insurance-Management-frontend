@@ -1,6 +1,7 @@
 import { Component, inject, DoCheck } from '@angular/core';
 import { Logout } from '../logout-component/logout';
 import { Roleservice } from '../../../core/service/roleservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-component',
@@ -11,8 +12,12 @@ import { Roleservice } from '../../../core/service/roleservice';
 export class HeaderComponent implements DoCheck {
   roleService = inject(Roleservice);
   role: string | null = null;
-
+  router = inject(Router);
   ngDoCheck() {
     this.role = this.roleService.getRole();
+  }
+
+  routeToProfile(){
+    this.router.navigate(['/auth/info']);
   }
 }

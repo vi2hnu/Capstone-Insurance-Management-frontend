@@ -1,33 +1,33 @@
 .footer {
-  padding: 24px 16px;
-  border-top: 1px solid #e0e0e0;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--card-outer);
+  color: var(--text-light);
+  margin-top: 40px;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
+  padding: 32px 40px;
   max-width: 1200px;
   margin: 0 auto;
-  flex-wrap: wrap;
 }
 
 .footer-section {
   flex: 1;
-  min-width: 220px;
 }
 
 .footer-section h4 {
   margin-bottom: 12px;
   font-size: 16px;
-  font-weight: 600;
+  color: var(--text-light);
 }
 
 .footer-section p {
   font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
+  margin: 6px 0;
+  line-height: 1.5;
+  color: var(--text-light);
 }
 
 .footer-section ul {
@@ -42,17 +42,19 @@
 
 .footer-section a {
   text-decoration: none;
-  font-size: 14px;
-  color: #333;
+  color: var(--text-light);
+  transition: color 0.2s;
 }
 
 .footer-section a:hover {
+  color: var(--danger-btn);
   text-decoration: underline;
 }
 
 .footer-bottom {
-  margin-top: 24px;
+  background-color: var(--card-inner);
+  color: var(--text-light);
   text-align: center;
+  padding: 12px;
   font-size: 13px;
-  color: #666;
 }
