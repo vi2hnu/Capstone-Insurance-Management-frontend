@@ -79,7 +79,7 @@
       <h4>Map User to Hospital</h4>
       
       <div class="form-group full-width">
-        <label>Select Hospital</label>
+        <label for="hospital">Select Hospital</label>
         <select [(ngModel)]="selectedHospitalId" name="hospital">
           <option [ngValue]="null" disabled selected>Choose a hospital...</option>
           @for(h of hospital; track h.id){
