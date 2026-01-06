@@ -5,8 +5,8 @@ import { ForgotPasswordPage } from "./pages/forgot-password-page/forgot-password
 import { YourInfo } from "./pages/your-info/your-info";
 
 export const AUTH_ROUTES: Routes = [
-  { path: 'login', component: LoginPage },
-  { path: 'register', component: RegistrationPage },
-  { path: 'forgot-password', component: ForgotPasswordPage},
-  { path: 'info', component: YourInfo}
+  { path: 'login', component: LoginPage ,title: 'Login'},
+  { path: 'register', component: RegistrationPage ,title: 'Sign up'},
+  { path: 'forgot-password', component: ForgotPasswordPage ,title: 'Forgot Password'},
+  { path: 'info', component: YourInfo ,title: 'Your account'}
 ];

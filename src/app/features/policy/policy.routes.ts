@@ -5,5 +5,6 @@ export const POLICY_ROUTE: Routes = [
   {
     path: '',
     component: YourPolicies
+    ,title: 'Your policies'
   }
 ];

@@ -22,12 +22,12 @@
       </div>
       <div class="info-item">
         <span class="label">Request Date</span>
-        <span class="value">{{ claim.claimRequestDate }}</span>
+        <span class="value">{{ claim.claimRequestDate | date:'yyyy-MM-dd' }}</span>
       </div>
       <div class="info-item full-width">
         <span class="label">Document</span>
         <a href="{{ claim.supportingDocument }}" target="_blank" class="doc-link">
-          View Supporting Document ↗
+          View Supporting Document 
         </a>
       </div>
     </div>

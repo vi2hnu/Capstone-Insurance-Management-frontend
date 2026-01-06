@@ -4,6 +4,7 @@ import { EnrollPage } from './page/enroll-page/enroll-page';
 export const ENROLLMENT_ROUTE: Routes = [
   {
     path: ':planId',
-    component: EnrollPage
+    component: EnrollPage,title: 'Enroll policy'
+    
   }
 ];

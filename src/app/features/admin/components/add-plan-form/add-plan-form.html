@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <button type="submit" class="primary-btn" [disabled]="planForm.invalid">
+    <button type="submit" class="primary-btn" [disabled]="planForm.invalid || successMessage">
       Create Plan
     </button>
   </form>

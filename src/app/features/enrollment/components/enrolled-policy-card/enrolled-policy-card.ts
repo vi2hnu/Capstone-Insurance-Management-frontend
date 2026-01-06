@@ -138,8 +138,6 @@ export class EnrolledPolicyCard {
   }
 
   cancel(): void {
-    if(!confirm("Are you sure you want to cancel this policy?")) return;
-    
     this.enrollmentService.cancelPolicy(this.buildRequest())
       .subscribe({
         next: () => {

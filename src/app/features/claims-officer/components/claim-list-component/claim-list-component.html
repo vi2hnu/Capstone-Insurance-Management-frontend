@@ -32,7 +32,7 @@
 
         <div class="detail-box">
           <span class="label">Request Date</span>
-          <span class="value">{{ claim.claimRequestDate }}</span>
+          <span class="value">{{ claim.claimRequestDate | date:'yyyy-MM-dd'}}</span>
         </div>
          @if(claim.providerReview===null){
           <span class="value">In-network claim</span>

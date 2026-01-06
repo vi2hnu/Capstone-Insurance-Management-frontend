@@ -11,7 +11,7 @@
     <p><span>Duration</span><strong>{{ plan.duration }} months</strong></p>
   </div>
 
-  <button (click)="enroll()" [disabled]="isProcessing">
+  <button (click)="enroll()" [disabled]="isProcessing || successMessage">
     {{ isProcessing ? 'Processing...' : 'Enroll' }}
   </button>
 

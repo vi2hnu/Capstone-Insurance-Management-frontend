@@ -39,7 +39,7 @@
           <td>{{ claim.requestedAmount }}</td>
           <td>{{ claim.status }}</td>
           <td>{{ claim.stage }}</td>
-          <td>{{ claim.claimRequestDate}}</td>
+          <td>{{ claim.claimRequestDate | date:'yyyy-MM-dd'}}</td>
         </tr>
       }
     </tbody>

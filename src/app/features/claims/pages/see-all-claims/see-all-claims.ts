@@ -33,7 +33,11 @@ export class SeeAllClaims implements OnInit {
         })
       )
       .subscribe(claims => {
-        this.claims = claims;
+        this.claims = claims.sort(
+          (a, b) =>
+            new Date(b.claimRequestDate).getTime() -
+            new Date(a.claimRequestDate).getTime()
+        );
       });
   }
 }

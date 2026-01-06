@@ -1,11 +1,11 @@
 .enroll-card {
-  width: 500px; /* Wider card */
-  background-color: #222831; /* Dark theme background */
+  width: 500px;
+  background-color: #222831;
   border-radius: 12px;
-  padding: 40px; /* Big spacious padding */
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 25px; /* More space between Title, Desc, Details */
+  gap: 25px;
   color: #DDDDDD;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
@@ -13,25 +13,23 @@
 .enroll-card h2 {
   margin: 0;
   color: #DDDDDD;
-  font-size: 32px; /* Bigger Title */
+  font-size: 32px;
   text-align: center;
   font-weight: 700;
   padding-bottom: 10px;
-  border-bottom: 1px solid #30475E; /* Subtle divider */
+  border-bottom: 1px solid #30475E;
 }
 
-/* Description Box */
 .enroll-card .description {
-  background-color: #30475E; /* Inner box color */
+  background-color: #30475E;
   padding: 20px;
   border-radius: 8px;
   margin: 0;
   font-size: 16px;
-  line-height: 1.6; /* Better readability */
+  line-height: 1.6;
   color: #e0e0e0;
 }
 
-/* Details Grid (Premium, Coverage, Duration) */
 .enroll-card .details {
   display: flex;
   justify-content: space-between;
@@ -51,23 +49,22 @@
 .enroll-card .details span {
   font-size: 13px;
   text-transform: uppercase;
-  color: #a0a0a0; /* Muted label color */
+  color: #a0a0a0;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .enroll-card .details strong {
-  font-size: 18px; /* Bigger numbers */
+  font-size: 18px;
   color: #ffffff;
 }
 
-/* Enroll Button */
 .enroll-card button {
   margin-top: 10px;
-  background-color: #ce3d3d; /* Red Accent */
+  background-color: #ce3d3d;
   color: white;
   border: none;
-  padding: 16px; /* Taller button */
+  padding: 16px;
   border-radius: 8px;
   font-size: 18px;
   font-weight: 600;
@@ -86,7 +83,6 @@
   cursor: not-allowed;
 }
 
-/* Status Messages */
 .enroll-card .success,
 .enroll-card .error,
 .enroll-card .processing {

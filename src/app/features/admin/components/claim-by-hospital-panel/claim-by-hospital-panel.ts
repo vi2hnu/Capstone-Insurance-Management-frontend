@@ -2,10 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Provider } from '../../service/provider/provider';
 import { Hospital } from '../../../../core/model/provider/provider';
 import { ClaimService } from '../../service/claims/claim-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-claim-by-hospital-panel',
   templateUrl: './claim-by-hospital-panel.html',
+  imports: [CommonModule],
   styleUrl: './claim-by-hospital-panel.css',
 })
 export class ClaimByHospitalPanel implements OnInit {

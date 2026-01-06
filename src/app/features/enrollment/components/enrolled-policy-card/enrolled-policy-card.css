@@ -1,6 +1,6 @@
 .policy-card {
-  width: 500px; /* Matches Login/Enroll width */
-  background-color: #222831; /* Dark Theme */
+  width: 500px;
+  background-color: #222831;
   border-radius: 12px;
   padding: 40px;
   display: flex;
@@ -20,33 +20,31 @@
   border-bottom: 1px solid #30475E;
 }
 
-/* Status Text */
 .policy-card .status {
   text-align: center;
   font-size: 16px;
   font-weight: 600;
   padding: 8px;
   border-radius: 6px;
-  background-color: #30475E; /* Subtle background box */
+  background-color: #30475E;
   margin-bottom: 5px;
 }
 
 .policy-card .status.ACTIVE {
-  color: #2ecc71; /* Bright Green */
-  border: 1px solid #2ecc71; /* Subtle border pop */
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
 }
 
 .policy-card .status.EXPIRED,
 .policy-card .status.CANCELLED {
-  color: #e74c3c; /* Red */
+  color: #e74c3c;
   border: 1px solid #e74c3c;
 }
 
-/* Details Boxes (Date & Money) */
 .policy-card .details {
   display: flex;
   justify-content: space-between;
-  background-color: #30475E; /* Inner Box Color */
+  background-color: #30475E;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -57,7 +55,7 @@
   flex-direction: column;
   gap: 8px;
   margin: 0;
-  width: 100%; /* Ensures equal spacing */
+  width: 100%;
 }
 
 .policy-card .details span {
@@ -73,7 +71,6 @@
   color: #ffffff;
 }
 
-/* Action Buttons Container */
 .policy-card .actions {
   display: flex;
   gap: 12px;
@@ -81,7 +78,7 @@
 }
 
 .policy-card button {
-  flex: 1; /* Makes buttons equal width */
+  flex: 1;
   padding: 14px;
   font-size: 16px;
   font-weight: 600;
@@ -90,7 +87,6 @@
   transition: all 0.2s ease;
 }
 
-/* 1. RENEW Button (Primary Theme Red) */
 .policy-card .renew {
   background-color: #ce3d3d;
   color: white;
@@ -100,7 +96,6 @@
   background-color: #b03535;
 }
 
-/* 2. CLAIM Button (Secondary White) */
 .policy-card .claim {
   background-color: #ffffff;
   color: #222831;
@@ -112,7 +107,6 @@
   color: white;
 }
 
-/* 3. CANCEL Button (Ghost/Outline) */
 .policy-card .cancel {
   background-color: transparent;
   color: #e74c3c;
@@ -123,7 +117,6 @@
   color: white;
 }
 
-/* Messages */
 .policy-card .success,
 .policy-card .error {
   padding: 15px;

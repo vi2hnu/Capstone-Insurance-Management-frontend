@@ -4,11 +4,12 @@ import { ClaimService } from '../../service/claims-service';
 import { ClaimReviewModel } from '../../model/claim-review-model';
 import { UserService } from '../../../../core/service/user/user-service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-claim-review-component',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './claim-review-component.html',
   styleUrl: './claim-review-component.css',
 })
