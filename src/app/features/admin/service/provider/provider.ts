@@ -8,8 +8,8 @@ import { CreateHospital } from '../../model/create-hospital';
   providedIn: 'root',
 })
 export class Provider {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/providerservice/api/admin'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/providerservice/api/admin'
 
   getHospitals(): Observable<Hospital[]> {
     return this.http.get<Hospital[]>(`${this.baseUrl}/get/all`)

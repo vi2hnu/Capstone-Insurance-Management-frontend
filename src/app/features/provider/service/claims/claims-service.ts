@@ -8,8 +8,8 @@ import { VerifyClaimModel } from '../../model/verify-claim-model';
   providedIn: 'root',
 })
 export class ClaimsService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/claimsservice/api/provider';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/claimsservice/api/provider';
 
   getSubmittedClaims(hospitalId:string): Observable<ClaimModel[]>{
     return this.http.get<ClaimModel[]>(`${this.baseUrl}/get/submitted/claims/${hospitalId}`);

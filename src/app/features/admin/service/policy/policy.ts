@@ -8,8 +8,8 @@ import { TopPlan } from '../../model/top-plan';
   providedIn: 'root',
 })
 export class Policy {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/policyservice/api/admin'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/policyservice/api/admin'
 
   addPlan(request: PlanModel):Observable<PlanModel>{
     return this.http.post<PlanModel>(`${this.baseUrl}/plan/add`,request);

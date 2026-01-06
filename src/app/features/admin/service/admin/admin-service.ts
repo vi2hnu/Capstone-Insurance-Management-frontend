@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AdminService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/identityservice/api'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/identityservice/api'
 
   addUser(request: CreateUser): Observable<any>{
     return this.http.post(`${this.baseUrl}/admin/create/user`,request);

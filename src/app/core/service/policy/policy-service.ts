@@ -7,8 +7,8 @@ import { PlanModel, PlolicyModel } from '../../model/policy/plolicy-model';
   providedIn: 'root',
 })
 export class PolicyService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/policyservice/api';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/policyservice/api';
 
   getAllPlan(): Observable<PlanModel[]>{
     return this.http.get<PlanModel[]>(`${this.baseUrl}`+'/plan/get/all');

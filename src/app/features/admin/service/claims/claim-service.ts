@@ -7,8 +7,8 @@ import { ClaimModel } from '../../../../core/model/claim/claim';
   providedIn: 'root',
 })
 export class ClaimService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/claimsservice/api/admin'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/claimsservice/api/admin'
 
   getClaimsByStatus(): Observable<any>{
     return this.http.get(`${this.baseUrl}/get/claims/by-status`);

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class Billing {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/billingservice/api/payment';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/billingservice/api/payment';
 
   createOrder(userId: string, amount: number,purpose:string): Observable<any> {
     const request = {userId,amount,purpose};

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProviderService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/providerservice/api/provider';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/providerservice/api/provider';
 
   checkPlan(planId: string, hospitalId: string): Observable<string> {
     return this.http.get(`${this.baseUrl}/get/type/${planId}/${hospitalId}`, { responseType: 'text' });

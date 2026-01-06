@@ -7,10 +7,10 @@ import { ClaimRequest } from '../model/claim-request-model';
   providedIn: 'root',
 })
 export class ClaimService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  private claimBaseUrl = 'http://localhost:9000/claimsservice/api/claim';
-  private uploadUrl = 'http://localhost:9000/claimsservice/api/media/upload';
+  private readonly claimBaseUrl = 'http://localhost:9000/claimsservice/api/claim';
+  private readonly uploadUrl = 'http://localhost:9000/claimsservice/api/media/upload';
 
   getAllClaimOfUser(userId: string) {
     return this.http.get<any[]>(`${this.claimBaseUrl}/user/${userId}`);

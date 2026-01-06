@@ -7,9 +7,9 @@ import { ClaimRequest } from '../../model/claim/claim';
   providedIn: 'root',
 })
 export class ClaimService {
-  private http = inject(HttpClient);
-  private claimBaseUrl = 'http://localhost:9000/claimsservice/api';
-  private uploadUrl = 'http://localhost:9000/claimsservice/api/media/upload';
+  private readonly http = inject(HttpClient);
+  private readonly claimBaseUrl = 'http://localhost:9000/claimsservice/api';
+  private readonly uploadUrl = 'http://localhost:9000/claimsservice/api/media/upload';
 
   uploadDocument(file: File) {
     const formData = new FormData();

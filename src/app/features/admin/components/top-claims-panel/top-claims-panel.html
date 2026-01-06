@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th>Claim ID</th>
-        <th>User ID</th>
+        <th>User</th>
         <th>Amount</th>
         <th>Status</th>
         <th>Stage</th>
@@ -14,7 +14,7 @@
       @for (claim of claims; track claim.id) {
         <tr>
           <td>{{ claim.id }}</td>
-          <td>{{ claim.userId }}</td>
+          <td>{{ claim.username }}</td>
           <td>{{ claim.requestedAmount }}</td>
           <td>{{ claim.status }}</td>
           <td>{{ claim.stage }}</td>

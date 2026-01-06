@@ -8,8 +8,8 @@ import { PolicyEnrollmentModel } from '../model/policy-enrollment-model';
   providedIn: 'root',
 })
 export class EnrollmentService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/policyservice/api/policy';
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/policyservice/api/policy';
 
   checkEnrollment(userId: string, planId: number): Observable<PlolicyModel> {
     return this.http.get<PlolicyModel>(

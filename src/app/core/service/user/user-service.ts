@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/identityservice/api'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/identityservice/api'
 
   getUserId(): string | null {
     return JSON.parse(localStorage.getItem('user') || 'null')?.id ?? null;

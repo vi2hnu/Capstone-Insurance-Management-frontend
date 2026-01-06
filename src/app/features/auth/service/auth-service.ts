@@ -11,9 +11,9 @@ import { ChangePassword } from '../model/change-password';
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:9000/identityservice/api/auth';
-  private providerUrl = 'http://localhost:9000/providerservice/api/provider/get/associated/hospital'
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = 'http://localhost:9000/identityservice/api/auth';
+  private readonly providerUrl = 'http://localhost:9000/providerservice/api/provider/get/associated/hospital'
 
   login(request: LoginModel): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.baseUrl}/signIn`, request)

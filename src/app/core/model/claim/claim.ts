@@ -2,6 +2,7 @@ export interface ClaimModel {
   id: number;
   policyId: number;
   userId: string;
+  username:string;
   hospitalId: number;
   requestedAmount: number;
   supportingDocument: string;
