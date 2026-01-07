@@ -76,7 +76,12 @@ The application follows a **Modular Architecture**, separating the codebase into
 
 ## SonarQube Report:
 
+<img width="1399" height="669" alt="Image" src="https://github.com/user-attachments/assets/8d9e5a18-8501-45c8-8ef5-efc361e6c8b3" />
 
+---
+
+## UI screenshots:
+* UI screenshots are present in the REPORT.DOCX file in root folder
 ---
 
 ## Project Structure
