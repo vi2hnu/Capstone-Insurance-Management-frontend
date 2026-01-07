@@ -14,9 +14,9 @@ export class LoginFormComponent {
   request: LoginModel = { username: '', password: '' };
   loading = false;
   error: string = '';
-  router = inject(Router);
+  readonly router = inject(Router);
 
-  authService = inject(AuthService);
+  readonly authService = inject(AuthService);
 
   onSubmit() {
     this.loading = true;

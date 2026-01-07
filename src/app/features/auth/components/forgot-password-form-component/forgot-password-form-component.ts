@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ForgotPasswordFormComponent {
   otpGenerated: boolean = false;
   email: string = '';
-  authService = inject(AuthService);
+  readonly authService = inject(AuthService);
   errorMessage: string = '';  
   error: boolean = false;
   success: string = '';
@@ -21,7 +21,7 @@ export class ForgotPasswordFormComponent {
   otp: string = '';
   otpRequest: OtpVerificationModel = { email: '', otp: '' };
   request: ForgotPasswordModel = { email: '' ,password:''};
-  router = inject(Router);
+  readonly router = inject(Router);
 
   
   generateOtp(){

@@ -10,7 +10,7 @@ import { Policy } from '../../service/policy/policy';
 })
 export class TopPlansPanel implements OnInit{
   topPlans: TopPlan[] = []
-  analyticService = inject(Policy);
+  readonly analyticService = inject(Policy);
 
   ngOnInit() {
     this.analyticService.getTopPlans().subscribe(data => {

@@ -11,7 +11,7 @@ import { ChangePasswordForm } from "../../components/change-password-form/change
 export class YourInfo implements OnInit{
   userName :string ='';
   email : string ='';
-  userService = inject(UserService);
+  readonly userService = inject(UserService);
 
   ngOnInit(): void {
     this.userName = this.userService.getUserName()!;

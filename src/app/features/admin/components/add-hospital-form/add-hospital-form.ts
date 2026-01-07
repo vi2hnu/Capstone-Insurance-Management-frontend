@@ -16,7 +16,7 @@ export class AddHospitalForm {
     phoneNumber:'',
     email:''
   };
-  providerService = inject(Provider);
+  readonly providerService = inject(Provider);
   successMessage = '';
   errorMessage = '';
 

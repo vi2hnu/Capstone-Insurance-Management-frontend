@@ -13,8 +13,8 @@ import { FormsModule } from '@angular/forms';
 export class ClaimSubmissionComponent implements OnInit {
   @Input() customerId!: string;
   @Input() policyId!: string | null;
-  claimService = inject(ClaimService);
-  private route = inject(ActivatedRoute);
+  readonly claimService = inject(ClaimService);
+  readonly route = inject(ActivatedRoute);
 
   planId!: string;
   hospitalId!: string;

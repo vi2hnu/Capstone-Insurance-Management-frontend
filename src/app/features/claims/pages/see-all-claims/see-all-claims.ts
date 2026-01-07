@@ -15,8 +15,8 @@ export class SeeAllClaims implements OnInit {
   claims: ClaimModel[] = [];
   errorMessage: string = '';
 
-  private userService = inject(UserService);
-  private claimService = inject(ClaimService);
+  private readonly userService = inject(UserService);
+  private readonly claimService = inject(ClaimService);
 
   ngOnInit(): void {
     const userId = this.userService.getUserId();

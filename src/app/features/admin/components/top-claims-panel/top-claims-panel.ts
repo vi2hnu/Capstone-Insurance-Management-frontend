@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TopClaimsPanel implements OnInit {
   claims : ClaimModel[] = [];
-  private claimService = inject(ClaimService);
+  private readonly claimService = inject(ClaimService);
 
   ngOnInit() {
     this.claimService.getTopClaims().subscribe({

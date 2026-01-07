@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 
 export class ClaimListComponent implements OnInit {
   claims: ClaimModel[] = [];
-  claimService = inject(ClaimService);
-  router = inject(Router);
+  readonly claimService = inject(ClaimService);
+  readonly router = inject(Router);
 
   ngOnInit() {
     this.claimService.getClaims().subscribe(data => {

@@ -14,8 +14,8 @@ import { Provider } from '../../service/provider/provider';
 })
 export class AddUserForm {
   request: CreateUser = { name: '', username: '', email: '', role: 'CUSTOMER', gender: 'MALE' };
-  adminService = inject(AdminService);
-  providerService = inject(Provider);
+  readonly adminService = inject(AdminService);
+  readonly providerService = inject(Provider);
   hospital !:Hospital[];
   successMessage = '';
   errorMessage = '';

@@ -5,6 +5,7 @@ import { Roleservice } from '../../../../core/service/roleservice';
 import { UserService } from '../../../../core/service/user/user-service';
 import { Billing } from '../../service/billing'; 
 import { Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-enrolled-policy-card',
@@ -16,12 +17,12 @@ export class EnrolledPolicyCard {
   @Input() policy!: PlolicyModel;
   @Input() userId!: string;
 
-  private enrollmentService = inject(EnrollmentService);
-  private roleService = inject(Roleservice);
-  private userService = inject(UserService);
-  private billingService = inject(Billing); 
+  private readonly enrollmentService = inject(EnrollmentService);
+  private readonly roleService = inject(Roleservice);
+  private readonly userService = inject(UserService);
+  private readonly billingService = inject(Billing); 
   private ngZone = inject(NgZone); 
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
   successMessage = '';
   errorMessage = '';
@@ -69,7 +70,7 @@ export class EnrolledPolicyCard {
   openTransactionModal(response: any) {
     const options = {
       order_id: response.orderId,
-      key: "rzp_test_RyB1uzTAASmWLT",
+      key: environment.razorpayKey,
       amount: response.amount,
       currency: response.currency,
       name: 'Smart health insurance company',

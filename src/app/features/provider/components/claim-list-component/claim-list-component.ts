@@ -16,8 +16,8 @@ export class ClaimListComponent implements OnChanges {
   @Input() mode!: 'view' | 'review';
 
   claims: ClaimModel[] = [];
-  clamimService = inject(ClaimsService);
-  userService = inject(UserService);
+  readonly clamimService = inject(ClaimsService);
+  readonly userService = inject(UserService);
 
   hospital = localStorage.getItem('hospital');
   providerId = this.userService.getUserId();

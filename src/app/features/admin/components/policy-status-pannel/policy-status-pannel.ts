@@ -11,7 +11,7 @@ Chart.register(...registerables);
 })
 export class PolicyStatusPannel implements AfterViewInit, OnDestroy  {
   private chart?: Chart;
-  private analyticsService = inject(Policy);
+  private readonly analyticsService = inject(Policy);
 
   ngAfterViewInit(): void {
     this.analyticsService.getPolicyStatusCounts().subscribe(data => {

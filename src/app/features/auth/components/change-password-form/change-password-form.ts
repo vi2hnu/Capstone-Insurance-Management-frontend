@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class ChangePasswordForm implements OnInit {
   @Input() userName !: string;
   requestChangePassword: boolean = false;
-  authService = inject(AuthService);
+  readonly authService = inject(AuthService);
   request = {
     username: '',
     oldPassword: '',

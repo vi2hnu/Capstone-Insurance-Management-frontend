@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './header-component.css',
 })
 export class HeaderComponent implements DoCheck {
-  roleService = inject(Roleservice);
+  readonly roleService = inject(Roleservice);
   role: string | null = null;
   router = inject(Router);
   ngDoCheck() {

@@ -11,7 +11,7 @@ import { PolicyService } from '../../../../core/service/policy/policy-service';
 export class PolicyCard implements OnInit{
   @Input() id!: string;
   policy: PlolicyModel[] = [];
-  policyService = inject(PolicyService);
+  readonly policyService = inject(PolicyService);
 
   ngOnInit(): void {
     this.policyService.getAllEnrolledPlan(this.id).subscribe({

@@ -18,9 +18,9 @@ export class ClaimFormComponent {
   @Input() customerId!: string;
   @Input() hospitals: HospitalNetworkModel[] = [];
 
-  private claimService = inject(ClaimService);
-  private roleService = inject(Roleservice);
-  private userService = inject(UserService);
+  private readonly claimService = inject(ClaimService);
+  private readonly roleService = inject(Roleservice);
+  private readonly userService = inject(UserService);
 
   selectedFile: File | null = null;
   uploadedDocument: string = '';
@@ -96,9 +96,15 @@ export class ClaimFormComponent {
         this.successMessage = 'Claim submitted successfully! Your claim is now being processed.';
         this.resetForm();
       },
-      error: () => {
-        this.errorMessage = 'Failed to submit claim. Please try again.';
+      error: (err) => {
+        if(err.status===400){
+          this.errorMessage = 'Invalid claim form please check all fields';
         this.successMessage = '';
+        }
+        else{
+          this.errorMessage = 'Failed to submit claim. Please try again.';
+        this.successMessage = '';
+        }
       },
     });
   }

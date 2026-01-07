@@ -15,7 +15,7 @@ import { RegisterPlanComponent } from "../../components/register-plan-component/
 export class PlanDetails implements OnInit {
   private route = inject(ActivatedRoute);
   private providerService = inject(ProviderService);
-  policyService = inject(PolicyService);
+  readonly policyService = inject(PolicyService);
   registered: boolean = true;
   hospitalId!: string;
   planId!: string;

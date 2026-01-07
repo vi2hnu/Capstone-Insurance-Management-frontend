@@ -13,9 +13,9 @@ import { UserService } from '../../../../core/service/user/user-service';
 })
 export class AddClaimPage implements OnInit {
   hospitals: HospitalNetworkModel[] = [];
-  providerService = inject(ProviderService);
-  roleService = inject(Roleservice);
-  userService = inject(UserService);
+  readonly providerService = inject(ProviderService);
+  readonly roleService = inject(Roleservice);
+  readonly userService = inject(UserService);
 
   planId: number = 0;
   policyId: number = 0;

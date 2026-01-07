@@ -15,7 +15,7 @@ export class UserCheckComponent {
     email:'',
     gender:'MALE'
   }
-  userService = inject(UserService);
+  readonly userService = inject(UserService);
   errorMessage = '';
 
   @Output() customerChecked = new EventEmitter<string>();

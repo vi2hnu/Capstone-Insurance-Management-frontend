@@ -15,8 +15,8 @@ export class YourPolicies implements OnInit {
   haveUserDetails = false;
   id = '';
 
-  roleService = inject(Roleservice);
-  userService = inject(UserService);
+  readonly roleService = inject(Roleservice);
+  readonly userService = inject(UserService);
 
   ngOnInit(): void {
     this.role = this.roleService.getRole()!;

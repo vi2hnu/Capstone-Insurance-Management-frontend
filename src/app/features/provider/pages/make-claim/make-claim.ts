@@ -14,7 +14,7 @@ export class MakeClaim {
   customerId: string | null = null;
   customerEnrolled: boolean = false;
   policyId: string | null = null;  
-  policyService = inject(PolicyService);
+  readonly policyService = inject(PolicyService);
   private route = inject(ActivatedRoute);
   planId = this.route.snapshot.paramMap.get('id');
 

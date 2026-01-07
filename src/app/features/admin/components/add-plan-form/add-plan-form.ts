@@ -21,7 +21,7 @@ export class AddPlanForm {
     status: ''
   };
 
-  policyService = inject(Policy);
+  readonly policyService = inject(Policy);
   errorMessage = '';
   successMessage = '';
   createPlan(){

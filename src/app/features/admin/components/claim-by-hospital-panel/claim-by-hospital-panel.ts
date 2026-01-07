@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ClaimByHospitalPanel implements OnInit {
 
-  private claimService = inject(ClaimService);
-  private providerService = inject(Provider)
+  private readonly claimService = inject(ClaimService);
+  private readonly providerService = inject(Provider)
 
   hospitals: Hospital[] = [];
   claims: any[] = [];

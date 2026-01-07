@@ -11,7 +11,7 @@ Chart.register(...registerables);
 })
 export class ClaimsStatusPanel implements AfterViewInit, OnDestroy {
 
-  private claimService = inject(ClaimService);
+  private readonly claimService = inject(ClaimService);
   private chart?: Chart;
 
   ngAfterViewInit(): void {

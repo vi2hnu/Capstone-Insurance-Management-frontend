@@ -23,8 +23,8 @@ export class ClaimReviewComponent implements OnInit {
   };
   message = '';
   isError = false;
-  claimService = inject(ClaimService);
-  userService = inject(UserService);
+  readonly claimService = inject(ClaimService);
+  readonly userService = inject(UserService);
 
   ngOnInit() {
     this.claim = history.state.claim;

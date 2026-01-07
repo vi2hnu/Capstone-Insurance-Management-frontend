@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegistrationFormComponent {
   request: RegisterModel = { name: '', username: '', email: '', password: '', gender: 'MALE' };
-  authService = inject(AuthService);
-  router = inject(Router);
+  readonly authService = inject(AuthService);
+  readonly router = inject(Router);
 
   loading = false;
   errorMessage = '';

@@ -32,9 +32,9 @@ export class PlansComponent implements OnInit {
   myControl = new FormControl('');
 
   role: string | null = null;
-  private policyService = inject(PolicyService);
-  private roleService = inject(Roleservice);
-  private router = inject(Router);
+  private readonly policyService = inject(PolicyService);
+  private readonly roleService = inject(Roleservice);
+  private readonly router = inject(Router);
 
   ngOnInit() {
     this.role = this.roleService.getRole();

@@ -33,10 +33,10 @@ export class EnrollPage implements OnInit {
   enrolled = false;
   checkUser = false;
 
-  private route = inject(ActivatedRoute);
-  private userService = inject(UserService);
-  private enrollmentService = inject(EnrollmentService);
-  private roleService = inject(Roleservice);
+  private readonly route = inject(ActivatedRoute);
+  private readonly userService = inject(UserService);
+  private readonly enrollmentService = inject(EnrollmentService);
+  private readonly roleService = inject(Roleservice);
 
   ngOnInit(): void {
     const role = this.roleService.getRole();
