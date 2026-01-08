@@ -25,13 +25,22 @@ export class LoginFormComponent {
     this.authService.login(this.request).subscribe({
       next: (response: LoginResponse) => {
         this.loading = false;
+        console.log(response.user.role);
         if(response.user.role=='PROVIDER'){
           this.getHospitalDetails(response.user.id);
         }
         if(response.changePassword===true){
           this.router.navigate(['/auth/info']);
         }
-        this.router.navigate(['/']);
+        if(response.user.role=='ADMIN'){
+          this.router.navigate(['/admin/dashboard']);
+        }
+        else if(response.user.role=="CLAIMS_OFFICER"){
+          this.router.navigate(['/claims-officer/dashboard']);
+        }
+        else{
+          this.router.navigate(['/']);
+        }
       },
       error: (err) => {
         this.loading = false;
