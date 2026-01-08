@@ -32,8 +32,11 @@ export class AddPlanForm {
         this.successMessage = 'Plan added succesfully';
       },
       error: (err) =>{
-        if(err.code == 409){
+        if(err.status == 409){
           this.errorMessage = 'Plan already exists';
+        }
+        else if(err.status === 400){
+          this.errorMessage = 'Invalid form';
         }
         else{
           this.errorMessage = 'Internal server error';

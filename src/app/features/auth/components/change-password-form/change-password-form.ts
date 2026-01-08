@@ -1,6 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth-service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password-form',
@@ -12,6 +13,7 @@ export class ChangePasswordForm implements OnInit {
   @Input() userName !: string;
   requestChangePassword: boolean = false;
   readonly authService = inject(AuthService);
+  router = inject(Router);
   request = {
     username: '',
     oldPassword: '',
@@ -48,6 +50,8 @@ export class ChangePasswordForm implements OnInit {
       next: () => {
         this.passwordChangeSuccess = true;
         this.requestChangePassword = false;
+        localStorage.clear();
+        this.router.navigate(['/auth/login']);
       },
       error: (err) => {
         this.error = true;

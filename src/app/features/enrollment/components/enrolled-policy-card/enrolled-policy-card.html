@@ -35,4 +35,11 @@
   @if (errorMessage) {
     <div class="error">{{ errorMessage }}</div>
   }
+
+  @if (showConfirmation) {
+    <app-conformation-component 
+      (confirm)="confirmCancellation()" 
+      (cancel)="closePopup()">
+    </app-conformation-component>
+  }
 </div>

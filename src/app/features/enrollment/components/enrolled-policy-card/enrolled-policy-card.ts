@@ -6,10 +6,12 @@ import { UserService } from '../../../../core/service/user/user-service';
 import { Billing } from '../../service/billing'; 
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
+import { ConformationComponent } from '../../../../shared/component/conformation-component/conformation-component';
 
 @Component({
   selector: 'app-enrolled-policy-card',
   standalone: true,
+  imports: [ConformationComponent], 
   templateUrl: './enrolled-policy-card.html',
   styleUrl: './enrolled-policy-card.css',
 })
@@ -27,6 +29,7 @@ export class EnrolledPolicyCard {
   successMessage = '';
   errorMessage = '';
   isProcessing = false;
+  showConfirmation = false;
 
   private buildRequest() {
     const role = this.roleService.getRole();
@@ -139,6 +142,11 @@ export class EnrolledPolicyCard {
   }
 
   cancel(): void {
+    this.showConfirmation = true;
+  }
+
+  confirmCancellation(): void {
+    this.showConfirmation = false;
     this.enrollmentService.cancelPolicy(this.buildRequest())
       .subscribe({
         next: () => {
@@ -150,6 +158,10 @@ export class EnrolledPolicyCard {
           this.errorMessage = 'Failed to cancel policy.';
         }
       });
+  }
+
+  closePopup(): void {
+    this.showConfirmation = false;
   }
 
   claim(): void {

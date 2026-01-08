@@ -28,6 +28,9 @@ export class LoginFormComponent {
         if(response.user.role=='PROVIDER'){
           this.getHospitalDetails(response.user.id);
         }
+        if(response.changePassword===true){
+          this.router.navigate(['/auth/info']);
+        }
         this.router.navigate(['/']);
       },
       error: (err) => {

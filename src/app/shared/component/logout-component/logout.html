@@ -1,1 +1,8 @@
 <button (click)="logout()">Logout</button>
+
+@if (showConfirmation) {
+  <app-conformation-component 
+    (confirm)="confirmLogout()" 
+    (cancel)="cancelLogout()">
+  </app-conformation-component>
+}

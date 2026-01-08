@@ -40,7 +40,8 @@ export class AddUserForm {
       error: (err) => {
         if (err.status === 409) {
           this.errorMessage = 'Username or Email already taken';
-        } else {
+        } 
+        else {
           this.errorMessage = 'Failed to create user';
         }
       },

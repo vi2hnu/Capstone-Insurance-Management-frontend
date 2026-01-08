@@ -28,7 +28,7 @@ export class AddHospitalForm {
       },
       error: (err)=>{
         if(err.status === 409){
-          this.errorMessage = "User already mapped with another hospital";
+          this.errorMessage = "Hospital already exists";
         }
         else{
           this.errorMessage = "Failed to create hospital";

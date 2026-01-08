@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth-service';
 import { ForgotPasswordModel, OtpVerificationModel } from '../../model/forgot-password-model';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-forgot-password-form-component',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './forgot-password-form-component.html',
   styleUrl: './forgot-password-form-component.css',
 })
@@ -14,28 +15,45 @@ export class ForgotPasswordFormComponent {
   otpGenerated: boolean = false;
   email: string = '';
   readonly authService = inject(AuthService);
-  errorMessage: string = '';  
+  errorMessage: string = '';
   error: boolean = false;
   success: string = '';
   validOtp: boolean = false;
   otp: string = '';
   otpRequest: OtpVerificationModel = { email: '', otp: '' };
-  request: ForgotPasswordModel = { email: '' ,password:''};
+  request: ForgotPasswordModel = { email: '', password: '' };
+  otpExpiresIn = 0;
+  otpTimer: any;
   readonly router = inject(Router);
 
-  
-  generateOtp(){
+
+  generateOtp() {
     this.authService.getOtp(this.email).subscribe({
-      next: (res) => {
+      next: () => {
         this.otpGenerated = true;
+
+        this.otpExpiresIn = 14 * 60;
+
+        this.otpTimer = setInterval(() => {
+          this.otpExpiresIn--;
+
+          if (this.otpExpiresIn <= 0) {
+            clearInterval(this.otpTimer);
+            this.otpGenerated = false;
+            this.errorMessage = 'OTP expired. Please request again.';
+            this.error = true;
+          }
+        }, 1000);
       },
-      error: (err) => {
-        console.error('Error generating OTP');
+      error: () => {
+        this.errorMessage = 'Failed to generate OTP';
+        this.error = true;
       }
     });
   }
 
-  verifyOtp(){
+
+  verifyOtp() {
     this.otpRequest.email = this.email;
     this.otpRequest.otp = this.otp;
     this.authService.verifyOtp(this.otpRequest).subscribe({
@@ -51,8 +69,8 @@ export class ForgotPasswordFormComponent {
     });
   }
 
-  forgetPassword(){
-    
+  forgetPassword() {
+
     this.authService.forgotPassword(this.request).subscribe({
       next: (res) => {
         this.success = 'Password reset successful! Please login with your new password.';
@@ -65,8 +83,8 @@ export class ForgotPasswordFormComponent {
     });
   }
 
-  goToLogin(){
+  goToLogin() {
     this.router.navigate(['/auth/login']);
   }
-  
+
 }
