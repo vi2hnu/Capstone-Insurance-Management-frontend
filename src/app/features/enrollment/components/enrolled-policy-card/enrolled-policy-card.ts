@@ -7,11 +7,12 @@ import { Billing } from '../../service/billing';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { ConformationComponent } from '../../../../shared/component/conformation-component/conformation-component';
+import { HospitalList } from "../hospital-list/hospital-list";
 
 @Component({
   selector: 'app-enrolled-policy-card',
   standalone: true,
-  imports: [ConformationComponent], 
+  imports: [ConformationComponent, HospitalList], 
   templateUrl: './enrolled-policy-card.html',
   styleUrl: './enrolled-policy-card.css',
 })

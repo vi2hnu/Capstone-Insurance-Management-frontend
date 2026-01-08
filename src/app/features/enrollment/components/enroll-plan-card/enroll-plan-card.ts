@@ -6,11 +6,12 @@ import { UserService } from '../../../../core/service/user/user-service';
 import { Billing } from '../../service/billing';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
+import { HospitalList } from "../hospital-list/hospital-list";
 
 @Component({
   selector: 'app-enroll-plan-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HospitalList],
   templateUrl: './enroll-plan-card.html',
   styleUrl: './enroll-plan-card.css',
 })

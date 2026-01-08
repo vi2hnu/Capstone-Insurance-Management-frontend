@@ -1,0 +1,24 @@
+<div class="container">
+  <h3 class="section-title">Hospitals</h3>
+
+  @if (isLoading) {
+    <p class="loading-text">Loading network details...</p>
+  } 
+  @else if (hospitals.length === 0) {
+    <p class="empty-text">No hospitals found for this plan.</p>
+  } 
+  @else {
+    <div class="hospital-list">
+      @for (item of hospitals; track item.id) {
+        <div class="hospital-item">
+          
+          <div class="hospital-info">
+            <h4 class="hospital-name">{{ item.hospital.hospitalName }}</h4>
+            <span class="city">{{ item.hospital.cityName }}</span>
+          </div>
+
+        </div>
+      }
+    </div>
+  }
+</div>

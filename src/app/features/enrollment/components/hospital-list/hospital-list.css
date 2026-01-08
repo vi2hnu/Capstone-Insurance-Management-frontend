@@ -1,0 +1,81 @@
+/* Container for the whole section */
+.container {
+  background-color: #222831;
+  padding: 20px;
+  border-radius: 12px;
+  color: #DDDDDD;
+}
+
+.section-title {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #DDDDDD;
+  font-weight: 700;
+  border-bottom: 1px solid #30475E;
+  padding-bottom: 10px;
+}
+
+/* The scrollable list area */
+.hospital-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px; /* Optional: limits height if list is huge */
+  overflow-y: auto;
+  padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Individual Card Styling */
+.hospital-item {
+  background-color: #30475E;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.hospital-item:hover {
+  background-color: #3a536b;
+}
+
+.hospital-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hospital-name {
+  margin: 0;
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+}
+
+.city {
+  font-size: 12px;
+  color: #a0a0a0;
+  margin-top: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Loading / Empty States */
+.loading-text, .empty-text {
+  text-align: center;
+  color: #a0a0a0;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* Custom Scrollbar */
+.hospital-list::-webkit-scrollbar {
+  width: 6px;
+}
+.hospital-list::-webkit-scrollbar-track {
+  background: #222831;
+}
+.hospital-list::-webkit-scrollbar-thumb {
+  background-color: #30475E;
+  border-radius: 3px;
+}
