@@ -26,6 +26,11 @@ export class AddUserForm {
   createUser() {
     this.successMessage = '';
     this.errorMessage = '';
+    
+    if ( !this.request.name?.trim() || !this.request.username?.trim() || !this.request.role || !this.request.gender){
+      this.errorMessage = 'All fields are required and cannot be spaces only';
+      return;
+    }
 
     this.adminService.addUser(this.request).subscribe({
       next: (response) => {

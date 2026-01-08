@@ -22,6 +22,11 @@ export class AddHospitalForm {
 
 
   createHospital(){
+    if (!this.request.hospitalName?.trim() || !this.request.cityName?.trim() || !this.request.phoneNumber?.trim()){
+      this.errorMessage = 'Fields cannot be empty or spaces only';
+      return;
+    }
+
     this.providerService.addHospital(this.request).subscribe({
       next: ()=>{
         this.successMessage = "Hospital entry created successfully";

@@ -27,6 +27,12 @@ export class AddPlanForm {
   createPlan(){
     this.errorMessage = '';
     this.successMessage = ''
+
+    if (!this.request.name?.trim() || !this.request.description?.trim()){
+      this.errorMessage = 'Plan name and description cannot be empty or spaces only';
+      return;
+    }
+    
     this.policyService.addPlan(this.request).subscribe({
       next: ()=>{
         this.successMessage = 'Plan added succesfully';
