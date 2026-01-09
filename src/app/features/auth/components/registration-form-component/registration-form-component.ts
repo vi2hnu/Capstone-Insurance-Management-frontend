@@ -25,7 +25,10 @@ export class RegistrationFormComponent {
     this.loading = true;
     this.errorMessage = '';
     this.successMessage = '';
-
+    if (!this.request.username?.trim() || !this.request.name?.trim()){
+      this.errorMessage = 'Fields cannot be empty or spaces only';
+      return;
+    }
     this.authService.register(this.request).subscribe({
       next: (res) => {
         this.successMessage = 'Registration successful! Now please login with same credentials';

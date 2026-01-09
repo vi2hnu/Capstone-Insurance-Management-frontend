@@ -11,6 +11,6 @@ export class ProviderService {
   private readonly baseUrl = 'http://localhost:9000/providerservice/api/provider';
 
   getProviderForPlan(planId:number): Observable<HospitalNetworkModel[]>{
-    return this.http.get<HospitalNetworkModel[]>(`${this.baseUrl}/get/all/3`);
+    return this.http.get<HospitalNetworkModel[]>(`${this.baseUrl}/get/all/`+planId);
   }
 }
